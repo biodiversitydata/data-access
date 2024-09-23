@@ -68,7 +68,16 @@ This repository contains files used to generate the online presentation [Biodive
 
 ## Usage
 
-Coming soon...
+If you want to render the slides locally, you need to install the following tools:
+
+- [`R`](https://cran.r-project.org/) and [`RStudio Desktop`](https://posit.co/download/rstudio-desktop/)
+- [`Quarto CLI`](https://quarto.org/docs/get-started/)
+
+[Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository and [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) your copy.
+
+Then, open the `index.qmd` in RStudio and click on the button **Render**. This will create an `index.html` containing your presentation. Open this `index.html` in your favorite web browser to access slides.
+
+To understand the file organisation of this repository, please read this [Wiki](https://github.com/biodiversitydata/quarto-template/wiki).
 
 
 ## Citation
