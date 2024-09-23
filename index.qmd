@@ -26,9 +26,44 @@ engine: knitr
 ```
 
 
-<!-- Insert section 'Quarto basics' -->
+<!-- Insert section 'Web portals' -->
 
 ```{r}
-#| child: "sections/quarto-basics.qmd"
+#| child: "sections/web-portals.qmd"
+```
+
+
+<!-- Insert section 'Scripting' -->
+
+```{r}
+#| child: "sections/scripting.qmd"
+```
+
+
+<!-- Insert section 'API' -->
+
+```{r}
+#| child: "sections/api.qmd"
+```
+
+
+<!-- Insert section 'Exercise' -->
+
+```{r}
+#| child: "sections/exercise.qmd"
+```
+
+
+<!-- Insert section 'Web scraping' -->
+
+```{r}
+#| child: "sections/web-scraping.qmd"
+```
+
+
+<!-- Insert section 'Resources' -->
+
+```{r}
+#| child: "sections/resources.qmd"
 ```
 
