@@ -172,32 +172,129 @@ _This is a non-exhaustive list_
 ::::
 
 
+## How does it work?
+
+> Requesting an API is based on the **client-server protocol**
+
+![](images/request-response.png){width=80% fig-align='center'}
+
+
+
+
+
 ## API Client
 
-...
+> It is the tool you use to request the API and parse the response (data).
 
-## Example of clients
+<br>
 
-Non-exhaustive list
+. . .
 
-- rgbif
-- taxize
-- rcites
-- rredlist
-- rfishbase
-- WikipediR
-- rwosstater
-- rscopus
-- rcrossref
-- openalexR
-- osmdata
-- and many more
+If you are lucky, an API client will **already be available**.
+
+<br>
+
+Non-exhaustive list of {{< fa brands r-project>}} packages
+
+:::: {.columns}
+
+::: {.column width=25%}
+- [`rgbif`](https://docs.ropensci.org/rgbif/articles/rgbif.html)
+- [`taxize`](https://docs.ropensci.org/taxize/articles/taxize.html)
+- [`rcites`](https://docs.ropensci.org/rcites/)
+:::
+
+::: {.column width=25%}
+- [`rredlist`](https://docs.ropensci.org/rredlist/)
+- [`rfishbase`](https://docs.ropensci.org/rfishbase/)
+- [`WikipediR`](https://github.com/Ironholds/WikipediR/)
+:::
+
+::: {.column width=25%}
+- [`rwosstarter`](https://frbcesab.github.io/rwosstarter)
+- [`rscopus`](https://github.com/muschellij2/rscopus)
+- [`rcrossref`](https://docs.ropensci.org/rcrossref/)
+:::
+
+::: {.column width=25%}
+- [`openalexR`](https://docs.ropensci.org/openalexR/)
+- [`osmdata`](https://docs.ropensci.org/osmdata/)
+:::
+
+::::
+
+. . .
+
+<br><br>
+
+
+{{< fa circle-right >}} &nbsp;Otherwise you will have to **build your own client**.
+
 
 
 ## Building an API client
 
-- Example w/ OpenStreetMap Nominatim [API](https://nominatim.openstreetmap.org/ui/search.html)
+{{< fa circle-right >}} &nbsp; Example with the **OpenStreetMap Nominatim** [API](https://nominatim.openstreetmap.org/ui/search.html)
+
+> Retrieve coordinates from a location (city, address, building, etc.)
+
+
+[![](images/nominatim-screenshot.png){width=70% fig-align='center'}](https://nominatim.openstreetmap.org/ui/search.html)
 
 
 
+## Building an API client
 
+
+:::: {.columns}
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Nominatim API URL ----
+endpoint <- "https://nominatim.openstreetmap.org/search"
+
+# Address to search for ----
+address <- "Montpellier, France"
+address <- utils::URLencode(address)
+address
+
+# Prepare the HTTP request ----
+request  <- paste0(endpoint, "?q=", address)
+request  <- paste0(request, "&format=json&limit=1")
+request
+
+# Send HTTP request  ----
+response <- httr2::request(request) |> 
+  httr2::req_perform()
+
+# Check response status ----
+httr2::resp_status(response)
+
+# Parse response content ----
+content <- httr2::resp_body_json(response)
+
+# Clean output ----
+content <- content[[1]]
+content <- data.frame("name" = content$"name",
+                      "lon"  = as.numeric(content$"lon"),
+                      "lat"  = as.numeric(content$"lat"))
+content
+```
+:::
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: true
+#| fig-width: 4
+#| fig-align: 'center'
+
+maps::map(regions = "France", fill = TRUE, col = "black")
+points(x = content$"lon", y = content$"lat", pch = 19, cex = 1, col = "red")
+text(x = content$"lon", y = content$"lat", labels = content$"name", pos = 2, col = "white", family = "serif")
+```
+:::
+::::
