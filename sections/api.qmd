@@ -32,7 +32,7 @@
 
 ## API - Definition
 
-Abbreviation of **Application Programming Interface**
+Abbreviation of **Application Programming Interface**[^1]
 
 - It is a type of software interface, offering a service to other pieces of software.
 - In contrast to a _user interface_, which connects a software to a person, an API connects pieces of software to each other.
@@ -40,7 +40,7 @@ Abbreviation of **Application Programming Interface**
 
 . . .
 
-<br>
+<br><br>
 
 Different types of API:
 
@@ -50,31 +50,126 @@ Different types of API:
 - **Web API**
 
 
+[^1]: Source: [Wikipedia](https://en.wikipedia.org/wiki/API)
 
-## Web API
 
-- Definition
-- HTTP Protocol
-- REST vs SOAP
-- Server-Client 
-- Automation & Reproducibility
-- Limitations & conditions
-- Authentication
-- Data format (XML/JSON)
+## (RESTful) Web API
+
+> **Definition**: A service accessed from a client device (mobile phones, laptops, etc.) to a Web server using the Hypertext Transfer Protocol (HTTP)[^2].
+
+- The **client** sends an HTTP **request** to the Web server
+- The Web **server** sends back a **response** in [**JSON**](https://en.wikipedia.org/wiki/JSON) or [**XML**](https://en.wikipedia.org/wiki/XML) format (raw data)
+- The Web server exposes one or more **endpoints** (predefined request/response)
+
+
+![**Code interface**](images/code-interface.png){width=50% fig-align='center'}
+
+[^2]: Source: [Wikipedia](https://en.wikipedia.org/wiki/Web_API)
+
+
+
+## (RESTful) Web API
+
+:::: {.columns}
+::: {.column width=50%}
+**Advantages** (for the user)
+
+- User can create its own client
+- Client can be developed in any language
+- User can include the service in a bigger project
+- User access raw data
+:::
+
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## (RESTful) Web API
+
+:::: {.columns}
+::: {.column width=50%}
+**Advantages** (for the user)
+
+- User can create its own client
+- Client can be developed in any language
+- User can include the service in a bigger project
+- User access raw data
+:::
+
+
+::: {.column width=50%}
+**Limitations**
+
+- Each API has its own specification
+- Authentication method (free or not)
+  - Token
+  - Login and password
+- Some restrictions
+  - Number of requests per day/month
+  - Number of records per request
+  - Incomplete data
+:::
+
+::::
+
+
+. . .
+
+<br><br>
+
+> Writing code means **automation** and **reproducibility**
+
+
+
 
 
 ## Example of APIs
 
-Non-exhaustive list
+_This is a non-exhaustive list_
 
-- GBIF
-- IUCN Red List
-- Fishbase
-- EOL, ITIS, BOLD, WORMS, etc.
-- Wikipedia
-- Web of Science, Scopus, CrossRef, OpenAlex
-- OpenStreetMap
-- and many more...
+<br>
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Biodiversity data**
+
+- Global Biodiversity Information Facility (GBIF) - [`API`](https://techdocs.gbif.org/en/openapi/)
+- IUCN Red List - [`API`](https://apiv3.iucnredlist.org/api/v3/docs)
+- Fishbase - [`API`](https://fishbaseapi.readme.io/reference/getting-started)
+- Species+/CITES Checklist - [`API`](https://api.speciesplus.net/)
+- Knowledge Network for Biocomplexity (KNB) - [`API`](https://knb.ecoinformatics.org/api)
+
+**Taxonomy**
+
+- Encyclopedia of Life (EOL) - [`API`](https://eol.org/docs/what-is-eol/classic-apis)
+- Integrated Taxonomic Information System (ITIS) - [`API`](https://www.itis.gov/ws_description.html)
+- Barcode of Life Data (BOLD) - [`API`](https://v3.boldsystems.org/index.php/api_home)
+- World Register of Marine Species (WoRMS) - [`API`](https://www.marinespecies.org/rest/)
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=40%}
+**Scientific literature**
+
+- Web of Science - [`API`](https://developer.clarivate.com/apis)
+- Scopus - [`API`](https://dev.elsevier.com/)
+- CrossRef - [`API`](https://www.crossref.org/documentation/retrieve-metadata/rest-api/)
+- OpenAlex - [`API`](https://docs.openalex.org/how-to-use-the-api/api-overview)
+
+**Others**
+
+- Wikipedia - [`API`](https://www.mediawiki.org/wiki/API:Main_page)
+- OpenStreetMap - [`API`](https://wiki.openstreetmap.org/wiki/API)
+- Zenodo - [`API`](https://developers.zenodo.org/)
+:::
+
+::::
 
 
 ## API Client
