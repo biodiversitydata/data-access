@@ -2,7 +2,7 @@
 
 
 
-## Accessing data
+## Accessing data from the Web
 
 <br/><br/><br/><br/>
 
@@ -32,6 +32,77 @@
 
 ## API - Definition
 
-**Application Programming Interface**
+Abbreviation of **Application Programming Interface**
 
-> ...
+- It is a type of software interface, offering a service to other pieces of software.
+- In contrast to a _user interface_, which connects a software to a person, an API connects pieces of software to each other.
+- **_API specification_**: documentation describing how to use such a connection ([Swagger](https://swagger.io/)).
+
+. . .
+
+<br>
+
+Different types of API:
+
+- Library and framework API
+- Operating systems API
+- Remote API
+- **Web API**
+
+
+
+## Web API
+
+- Definition
+- HTTP Protocol
+- REST vs SOAP
+- Server-Client 
+- Automation & Reproducibility
+- Limitations & conditions
+- Authentication
+- Data format (XML/JSON)
+
+
+## Example of APIs
+
+Non-exhaustive list
+
+- GBIF
+- IUCN Red List
+- Fishbase
+- EOL, ITIS, BOLD, WORMS, etc.
+- Wikipedia
+- Web of Science, Scopus, CrossRef, OpenAlex
+- OpenStreetMap
+- and many more...
+
+
+## API Client
+
+...
+
+## Example of clients
+
+Non-exhaustive list
+
+- rgbif
+- taxize
+- rcites
+- rredlist
+- rfishbase
+- WikipediR
+- rwosstater
+- rscopus
+- rcrossref
+- openalexR
+- osmdata
+- and many more
+
+
+## Building an API client
+
+- Example w/ OpenStreetMap Nominatim [API](https://nominatim.openstreetmap.org/ui/search.html)
+
+
+
+
