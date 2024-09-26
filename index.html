@@ -474,14 +474,14 @@ Author name<br/>
 </section>
 <section id="api---definition" class="slide level2">
 <h2>API - Definition</h2>
-<p>Abbreviation of <strong>Application Programming Interface</strong></p>
+<p>Abbreviation of <strong>Application Programming Interface</strong><sup>1</sup></p>
 <ul>
 <li>It is a type of software interface, offering a service to other pieces of software.</li>
 <li>In contrast to a <em>user interface</em>, which connects a software to a person, an API connects pieces of software to each other.</li>
 <li><strong><em>API specification</em></strong>: documentation describing how to use such a connection (<a href="https://swagger.io/">Swagger</a>).</li>
 </ul>
 <div class="fragment">
-<p><br></p>
+<p><br><br></p>
 <p>Different types of API:</p>
 <ul>
 <li>Library and framework API</li>
@@ -490,33 +490,112 @@ Author name<br/>
 <li><strong>Web API</strong></li>
 </ul>
 </div>
-</section>
-<section id="web-api" class="slide level2">
-<h2>Web API</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Source: <a href="https://en.wikipedia.org/wiki/API">Wikipedia</a></p></li></ol></aside></section>
+<section id="restful-web-api" class="slide level2">
+<h2>(RESTful) Web API</h2>
+<blockquote>
+<p><strong>Definition</strong>: A service accessed from a client device (mobile phones, laptops, etc.) to a Web server using the Hypertext Transfer Protocol (HTTP)<sup>1</sup>.</p>
+</blockquote>
 <ul>
-<li>Definition</li>
-<li>HTTP Protocol</li>
-<li>REST vs SOAP</li>
-<li>Server-Client</li>
-<li>Automation &amp; Reproducibility</li>
-<li>Limitations &amp; conditions</li>
-<li>Authentication</li>
-<li>Data format (XML/JSON)</li>
+<li>The <strong>client</strong> sends an HTTP <strong>request</strong> to the Web server</li>
+<li>The Web <strong>server</strong> sends back a <strong>response</strong> in <a href="https://en.wikipedia.org/wiki/JSON"><strong>JSON</strong></a> or <a href="https://en.wikipedia.org/wiki/XML"><strong>XML</strong></a> format (raw data)</li>
+<li>The Web server exposes one or more <strong>endpoints</strong> (predefined request/response)</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/code-interface.png" style="width:50.0%"></p>
+<figcaption><strong>Code interface</strong></figcaption>
+</figure>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Source: <a href="https://en.wikipedia.org/wiki/Web_API">Wikipedia</a></p></li></ol></aside></section>
+<section id="restful-web-api-1" class="slide level2">
+<h2>(RESTful) Web API</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Advantages</strong> (for the user)</p>
+<ul>
+<li>User can create its own client</li>
+<li>Client can be developed in any language</li>
+<li>User can include the service in a bigger project</li>
+<li>User access raw data</li>
+</ul>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="restful-web-api-2" class="slide level2">
+<h2>(RESTful) Web API</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Advantages</strong> (for the user)</p>
+<ul>
+<li>User can create its own client</li>
+<li>Client can be developed in any language</li>
+<li>User can include the service in a bigger project</li>
+<li>User access raw data</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Limitations</strong></p>
+<ul>
+<li>Each API has its own specification</li>
+<li>Authentication method (free or not)
+<ul>
+<li>Token</li>
+<li>Login and password</li>
+</ul></li>
+<li>Some restrictions
+<ul>
+<li>Number of requests per day/month</li>
+<li>Number of records per request</li>
+<li>Incomplete data</li>
+</ul></li>
+</ul>
+</div></div>
+<div class="fragment">
+<p><br><br></p>
+<blockquote>
+<p>Writing code means <strong>automation</strong> and <strong>reproducibility</strong></p>
+</blockquote>
+</div>
 </section>
 <section id="example-of-apis" class="slide level2">
 <h2>Example of APIs</h2>
-<p>Non-exhaustive list</p>
+<p><em>This is a non-exhaustive list</em></p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Biodiversity data</strong></p>
 <ul>
-<li>GBIF</li>
-<li>IUCN Red List</li>
-<li>Fishbase</li>
-<li>EOL, ITIS, BOLD, WORMS, etc.</li>
-<li>Wikipedia</li>
-<li>Web of Science, Scopus, CrossRef, OpenAlex</li>
-<li>OpenStreetMap</li>
-<li>and many more…</li>
+<li>Global Biodiversity Information Facility (GBIF) - <a href="https://techdocs.gbif.org/en/openapi/"><code>API</code></a></li>
+<li>IUCN Red List - <a href="https://apiv3.iucnredlist.org/api/v3/docs"><code>API</code></a></li>
+<li>Fishbase - <a href="https://fishbaseapi.readme.io/reference/getting-started"><code>API</code></a></li>
+<li>Species+/CITES Checklist - <a href="https://api.speciesplus.net/"><code>API</code></a></li>
+<li>Knowledge Network for Biocomplexity (KNB) - <a href="https://knb.ecoinformatics.org/api"><code>API</code></a></li>
 </ul>
+<p><strong>Taxonomy</strong></p>
+<ul>
+<li>Encyclopedia of Life (EOL) - <a href="https://eol.org/docs/what-is-eol/classic-apis"><code>API</code></a></li>
+<li>Integrated Taxonomic Information System (ITIS) - <a href="https://www.itis.gov/ws_description.html"><code>API</code></a></li>
+<li>Barcode of Life Data (BOLD) - <a href="https://v3.boldsystems.org/index.php/api_home"><code>API</code></a></li>
+<li>World Register of Marine Species (WoRMS) - <a href="https://www.marinespecies.org/rest/"><code>API</code></a></li>
+</ul>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:40%;">
+<p><strong>Scientific literature</strong></p>
+<ul>
+<li>Web of Science - <a href="https://developer.clarivate.com/apis"><code>API</code></a></li>
+<li>Scopus - <a href="https://dev.elsevier.com/"><code>API</code></a></li>
+<li>CrossRef - <a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/"><code>API</code></a></li>
+<li>OpenAlex - <a href="https://docs.openalex.org/how-to-use-the-api/api-overview"><code>API</code></a></li>
+</ul>
+<p><strong>Others</strong></p>
+<ul>
+<li>Wikipedia - <a href="https://www.mediawiki.org/wiki/API:Main_page"><code>API</code></a></li>
+<li>OpenStreetMap - <a href="https://wiki.openstreetmap.org/wiki/API"><code>API</code></a></li>
+<li>Zenodo - <a href="https://developers.zenodo.org/"><code>API</code></a></li>
+</ul>
+</div></div>
 </section>
 <section id="api-client" class="slide level2">
 <h2>API Client</h2>
@@ -582,6 +661,7 @@ Author name<br/>
 </div>
 </div>
 </section></section>
+
     </div>
   </div>
 
