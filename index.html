@@ -728,44 +728,48 @@ Author name<br/>
 </section>
 <section id="building-an-api-client-1" class="slide level2">
 <h2>Building an API client</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Nominatim API URL ----</span></span>
-<span id="cb1-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="co"># Address to search for ----</span></span>
-<span id="cb1-5"><a href=""></a>address <span class="ot">&lt;-</span> <span class="st">"Montpellier, France"</span></span>
-<span id="cb1-6"><a href=""></a>address <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">URLencode</span>(address)</span>
-<span id="cb1-7"><a href=""></a>address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Nominatim API URL ----</span></span>
+<span id="cb2-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co"># Address to search for ----</span></span>
+<span id="cb2-5"><a href=""></a>address <span class="ot">&lt;-</span> <span class="st">"Montpellier, France"</span></span>
+<span id="cb2-6"><a href=""></a>address <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">URLencode</span>(address)</span>
+<span id="cb2-7"><a href=""></a>address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Montpellier,%20France"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
-<span id="cb3-2"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(endpoint, <span class="st">"?q="</span>, address)</span>
-<span id="cb3-3"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(request, <span class="st">"&amp;format=json&amp;limit=1"</span>)</span>
-<span id="cb3-4"><a href=""></a>request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb4-2"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(endpoint, <span class="st">"?q="</span>, address)</span>
+<span id="cb4-3"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(request, <span class="st">"&amp;format=json&amp;limit=1"</span>)</span>
+<span id="cb4-4"><a href=""></a>request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "https://nominatim.openstreetmap.org/search?q=Montpellier,%20France&amp;format=json&amp;limit=1"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
-<span id="cb5-2"><a href=""></a>response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(request) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
-<span id="cb5-4"><a href=""></a></span>
-<span id="cb5-5"><a href=""></a><span class="co"># Check response status ----</span></span>
-<span id="cb5-6"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_status</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
+<span id="cb6-2"><a href=""></a>response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(request) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a><span class="co"># Check response status ----</span></span>
+<span id="cb6-6"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_status</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 200</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Parse response content ----</span></span>
-<span id="cb7-2"><a href=""></a>content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(response)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a><span class="co"># Clean output ----</span></span>
-<span id="cb7-5"><a href=""></a>content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
-<span id="cb7-6"><a href=""></a>content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
-<span id="cb7-7"><a href=""></a>                      <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
-<span id="cb7-8"><a href=""></a>                      <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
-<span id="cb7-9"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Parse response content ----</span></span>
+<span id="cb8-2"><a href=""></a>content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(response)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Clean output ----</span></span>
+<span id="cb8-5"><a href=""></a>content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
+<span id="cb8-6"><a href=""></a>content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
+<span id="cb8-7"><a href=""></a>                      <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
+<span id="cb8-8"><a href=""></a>                      <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
+<span id="cb8-9"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##          name      lon      lat
 ## 1 Montpellier 3.876734 43.61124</code></pre>
@@ -773,13 +777,13 @@ Author name<br/>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>maps<span class="sc">::</span><span class="fu">map</span>(<span class="at">regions =</span> <span class="st">"France"</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span>
-<span id="cb9-2"><a href=""></a><span class="fu">points</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb9-3"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">labels =</span> content<span class="sc">$</span><span class="st">"name"</span>, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">family =</span> <span class="st">"serif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>maps<span class="sc">::</span><span class="fu">map</span>(<span class="at">regions =</span> <span class="st">"France"</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span>
+<span id="cb10-2"><a href=""></a><span class="fu">points</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb10-3"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">labels =</span> content<span class="sc">$</span><span class="st">"name"</span>, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">family =</span> <span class="st">"serif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
 </figure>
 </div>
 </div>
