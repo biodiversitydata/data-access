@@ -1,4 +1,4 @@
-# {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals
+# {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals (5 min)
 
 ## Coming soon
 

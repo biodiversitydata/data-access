@@ -1,4 +1,4 @@
-# {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise
+# {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (40 min)
 
 ## Coming soon
 

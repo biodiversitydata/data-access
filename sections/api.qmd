@@ -1,5 +1,37 @@
-# {{< fa wrench size=1x >}} &nbsp;&nbsp;API
+# {{< fa wrench size=1x >}} &nbsp;&nbsp;API (15 min)
 
-## Coming soon
 
-Work in progress...
+
+## Accessing data
+
+<br/><br/><br/><br/>
+
+:::: { .columns }
+::: { .column .center width="45%"}
+![**User interface**](images/user-interface.png)
+:::
+::: { .column .center width="10%"}
+:::
+::: { .column .center width="45%"}
+![**Code interface**](images/code-interface.png)
+:::
+::::
+
+:::: { .columns }
+::: { .column .center width="45%"}
+{{< fa computer-mouse size=lg >}}
+:::
+::: { .column .center width="10%"}
+:::
+::: { .column .center width="45%"}
+{{< fa code size=lg >}}
+:::
+::::
+
+
+
+## API - Definition
+
+**Application Programming Interface**
+
+> ...
