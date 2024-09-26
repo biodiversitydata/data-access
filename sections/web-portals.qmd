@@ -1,5 +1,97 @@
 # {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals (5 min)
 
-## Coming soon
+---
 
-Work in progress...
+
+<br>
+
+<br>
+
+<br>
+
+### Imagine: you're doing some species distribution models. 
+
+> You have a **list of species** and their **occurrences in space and time**. 
+
+Now you need: 
+
+- trait information for each species, for 3 specific traits
+
+- temperature projections for the next year (2025), on a monthly basis.
+
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+## Before anything else:
+
+Imagine precisely what kind of data you need. *Draw* the table you want to get.
+
+![](images/sp_traits.png){width=55%}
+
+
+## TRY: a database for plant traits
+
+
+> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
+
+### 1st step : understanding how the data is structured
+
+Check out the [data explorer](https://www.try-db.org/de/de.php) section.
+
+*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
+
+Explore the [trait table](https://www.try-db.org/de/TabDetails.php).
+
+Let's try  `leaf area` --> 88 traits contain "leaf area" in their description!
+
+Notice the  `Trait ID`  column, this is what you'll need to query the trait(s) you select.
+
+> LAI : 3116 , Flower size: 3568, Photosynthesis: intercellular CO2 concentration: 49
+
+
+Other table fields:
+
+- `ObsNum`: Number of Observations
+
+- `ObsGRNum`: Number of geo-referenced Observations
+
+- `AccSpecNum`: Number of Accepted Species
+
+
+
+
+
+
+## 2. Look at the species list
+
+Get species IDS: 
+
+- Arabidopsis thaliana : 4341
+
+- Bellis perennis: 7173
+
+- Quercus ilex: 45402
+
+
+
+### Get data
+
+Register, go to `request data`. Now you can file in the trait IDs.
+
+Submit request. Write a short description of your project. You'll receive a text file by email within a few days.
+
+> Requesting data can take a while, especially if you request a lot of data.
+
+
+
+
+
+
