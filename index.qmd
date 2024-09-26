@@ -9,6 +9,9 @@ format:
     chalkboard: true
     toc-depth: 1
     theme: [default, "styles/main.scss"]
+knitr:
+  opts_chunk: 
+    comment: "##" 
 engine: knitr
 ---
 
