@@ -487,9 +487,64 @@ Author name<br/>
 <h1><i class="fa-solid fa-globe fa-1x" aria-label="globe"></i> &nbsp;&nbsp;Web portals (5 min)</h1>
 
 </section>
-<section id="coming-soon" class="slide level2">
-<h2>Coming soon</h2>
-<p>Work in progress…</p>
+<section class="slide level2">
+
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<h3 id="imagine-youre-doing-some-species-distribution-models.">Imagine: you’re doing some species distribution models.</h3>
+<blockquote>
+<p>You have a <strong>list of species</strong> and their <strong>occurrences in space and time</strong>.</p>
+</blockquote>
+<p>Now you need:</p>
+<ul>
+<li><p>trait information for each species, for 3 specific traits</p></li>
+<li><p>temperature projections for the next year (2025), on a monthly basis.</p></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+</section>
+<section id="before-anything-else" class="slide level2">
+<h2>Before anything else:</h2>
+<p>Imagine precisely what kind of data you need. <em>Draw</em> the table you want to get.</p>
+<p><img data-src="images/sp_traits.png" style="width:55.0%"></p>
+</section>
+<section id="try-a-database-for-plant-traits" class="slide level2">
+<h2>TRY: a database for plant traits</h2>
+<blockquote>
+<p><strong>TRY data portal</strong>: <a href="https://www.try-db.org/TryWeb/dp.php">https://www.try-db.org/TryWeb/dp.php</a></p>
+</blockquote>
+<h3 id="st-step-understanding-how-the-data-is-structured">1st step : understanding how the data is structured</h3>
+<p>Check out the <a href="https://www.try-db.org/de/de.php">data explorer</a> section.</p>
+<p><em>What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?</em></p>
+<p>Explore the <a href="https://www.try-db.org/de/TabDetails.php">trait table</a>.</p>
+<p>Let’s try <code>leaf area</code> –&gt; 88 traits contain “leaf area” in their description!</p>
+<p>Notice the <code>Trait ID</code> column, this is what you’ll need to query the trait(s) you select.</p>
+<blockquote>
+<p>LAI : 3116 , Flower size: 3568, Photosynthesis: intercellular CO2 concentration: 49</p>
+</blockquote>
+<p>Other table fields:</p>
+<ul>
+<li><p><code>ObsNum</code>: Number of Observations</p></li>
+<li><p><code>ObsGRNum</code>: Number of geo-referenced Observations</p></li>
+<li><p><code>AccSpecNum</code>: Number of Accepted Species</p></li>
+</ul>
+</section>
+<section id="look-at-the-species-list" class="slide level2">
+<h2>2. Look at the species list</h2>
+<p>Get species IDS:</p>
+<ul>
+<li><p>Arabidopsis thaliana : 4341</p></li>
+<li><p>Bellis perennis: 7173</p></li>
+<li><p>Quercus ilex: 45402</p></li>
+</ul>
+<h3 id="get-data">Get data</h3>
+<p>Register, go to <code>request data</code>. Now you can file in the trait IDs.</p>
+<p>Submit request. Write a short description of your project. You’ll receive a text file by email within a few days.</p>
+<blockquote>
+<p>Requesting data can take a while, especially if you request a lot of data.</p>
+</blockquote>
 <!-- Insert section 'Scripting' -->
 </section></section>
 <section>
@@ -497,7 +552,7 @@ Author name<br/>
 <h1><i class="fa-solid fa-code fa-1x" aria-label="code"></i> &nbsp;&nbsp;Scripting (10 min)</h1>
 
 </section>
-<section id="coming-soon-1" class="slide level2">
+<section id="coming-soon" class="slide level2">
 <h2>Coming soon</h2>
 <p>Work in progress…</p>
 <!-- Insert section 'API' -->
@@ -796,7 +851,7 @@ Author name<br/>
 <h1><i class="fa-solid fa-user-clock fa-1x" aria-label="user-clock"></i> &nbsp;&nbsp;Exercise (40 min)</h1>
 
 </section>
-<section id="coming-soon-2" class="slide level2">
+<section id="coming-soon-1" class="slide level2">
 <h2>Coming soon</h2>
 <p>Work in progress…</p>
 <!-- Insert section 'Web scraping' -->
@@ -806,7 +861,7 @@ Author name<br/>
 <h1><i class="fa-brands fa-css3 fa-1x" aria-label="css3"></i> &nbsp;&nbsp;Web scraping (15 min)</h1>
 
 </section>
-<section id="coming-soon-3" class="slide level2">
+<section id="coming-soon-2" class="slide level2">
 <h2>Coming soon</h2>
 <p>Work in progress…</p>
 <!-- Insert section 'Resources' -->
@@ -816,7 +871,7 @@ Author name<br/>
 <h1><i class="fa-solid fa-book fa-1x" aria-label="book"></i> &nbsp;&nbsp;Resources</h1>
 
 </section>
-<section id="coming-soon-4" class="slide level2">
+<section id="coming-soon-3" class="slide level2">
 <h2>Coming soon</h2>
 <p>Work in progress…</p>
 <div class="quarto-auto-generated-content">
