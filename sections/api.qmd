@@ -246,6 +246,14 @@ Non-exhaustive list of {{< fa brands r-project>}} packages
 ## Building an API client
 
 
+```{r}
+#| eval: false
+#| echo: true
+
+install.packages("httr2")
+install.packages("maps")
+```
+
 :::: {.columns}
 ::: {.column width=50%}
 
