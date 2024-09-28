@@ -591,26 +591,31 @@ Author name<br/>
 </div><div class="column center" style="width:45%;">
 <p><i class="fa-solid fa-code fa-lg" aria-label="code"></i></p>
 </div></div>
+<!--
+
+## API - Definition
+
+Abbreviation of **Application Programming Interface**[^1]
+
+- It is a type of software interface, offering a service to other pieces of software.
+- In contrast to a _user interface_, which connects a software to a person, an API connects pieces of software to each other.
+- **_API specification_**: documentation describing how to use such a connection ([Swagger](https://swagger.io/)).
+
+. . .
+
+<br><br>
+
+Different types of API:
+
+- Library and framework API
+- Operating systems API
+- Remote API
+- **Web API**
+
+
+[^1]: Source: [Wikipedia](https://en.wikipedia.org/wiki/API)
+-->
 </section>
-<section id="api---definition" class="slide level2">
-<h2>API - Definition</h2>
-<p>Abbreviation of <strong>Application Programming Interface</strong><sup>1</sup></p>
-<ul>
-<li>It is a type of software interface, offering a service to other pieces of software.</li>
-<li>In contrast to a <em>user interface</em>, which connects a software to a person, an API connects pieces of software to each other.</li>
-<li><strong><em>API specification</em></strong>: documentation describing how to use such a connection (<a href="https://swagger.io/">Swagger</a>).</li>
-</ul>
-<div class="fragment">
-<p><br><br></p>
-<p>Different types of API:</p>
-<ul>
-<li>Library and framework API</li>
-<li>Operating systems API</li>
-<li>Remote API</li>
-<li><strong>Web API</strong></li>
-</ul>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Source: <a href="https://en.wikipedia.org/wiki/API">Wikipedia</a></p></li></ol></aside></section>
 <section id="restful-web-api" class="slide level2">
 <h2>(RESTful) Web API</h2>
 <blockquote>
@@ -627,7 +632,7 @@ Author name<br/>
 <figcaption><strong>Code interface</strong></figcaption>
 </figure>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Source: <a href="https://en.wikipedia.org/wiki/Web_API">Wikipedia</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Source: <a href="https://en.wikipedia.org/wiki/Web_API">Wikipedia</a></p></li></ol></aside></section>
 <section id="restful-web-api-1" class="slide level2">
 <h2>(RESTful) Web API</h2>
 <div class="columns">
@@ -639,6 +644,10 @@ Author name<br/>
 <li>User can include the service in a bigger project</li>
 <li>User access raw data</li>
 </ul>
+<p><br><br></p>
+<blockquote>
+<p>Writing code means <strong>automation</strong> and <strong>reproducibility</strong></p>
+</blockquote>
 </div><div class="column" style="width:50%;">
 
 </div></div>
@@ -654,6 +663,10 @@ Author name<br/>
 <li>User can include the service in a bigger project</li>
 <li>User access raw data</li>
 </ul>
+<p><br><br></p>
+<blockquote>
+<p>Writing code means <strong>automation</strong> and <strong>reproducibility</strong></p>
+</blockquote>
 </div><div class="column" style="width:50%;">
 <p><strong>Limitations</strong></p>
 <ul>
@@ -671,12 +684,6 @@ Author name<br/>
 </ul></li>
 </ul>
 </div></div>
-<div class="fragment">
-<p><br><br></p>
-<blockquote>
-<p>Writing code means <strong>automation</strong> and <strong>reproducibility</strong></p>
-</blockquote>
-</div>
 </section>
 <section id="example-of-apis" class="slide level2">
 <h2>Example of APIs</h2>
@@ -771,7 +778,62 @@ Author name<br/>
 </section>
 <section id="building-an-api-client" class="slide level2">
 <h2>Building an API client</h2>
-<p><i class="fa-solid fa-circle-right" aria-label="circle-right"></i> &nbsp; Example with the <strong>OpenStreetMap Nominatim</strong> <a href="https://nominatim.openstreetmap.org/ui/search.html">API</a></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/httr2-screenshot.png"></p>
+<p><br></p>
+<p>Available at: <a href="https://httr2.r-lib.org/" class="uri">https://httr2.r-lib.org/</a></p>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Install 'httr2' package ----</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<table class="caption-top">
+<caption>Table: Main functions of <code>httr2</code></caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>request()</code></td>
+<td style="text-align: left;">Create an HTTP request</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>req_url_query()</code></td>
+<td style="text-align: left;">Add parameters to an HTTP request</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>req_perform()</code></td>
+<td style="text-align: left;">Send HTTP request to an API</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>resp_status()</code></td>
+<td style="text-align: left;">Check the HTTP response status</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>resp_content_type()</code></td>
+<td style="text-align: left;">Check the content type of the response</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>resp_body_json()</code></td>
+<td style="text-align: left;">Parse the response content (JSON format)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>resp_body_xml()</code></td>
+<td style="text-align: left;">Parse the response content (XML format)</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="building-an-api-client-1" class="slide level2">
+<h2>Building an API client</h2>
+<p><i class="fa-solid fa-circle-right" aria-label="circle-right"></i> &nbsp; Example with the <strong>OpenStreetMap Nominatim</strong> <a href="https://nominatim.org/release-docs/develop/api/Overview/">API</a></p>
 <blockquote>
 <p>Retrieve coordinates from a location (city, address, building, etc.)</p>
 </blockquote>
@@ -781,66 +843,653 @@ Author name<br/>
 </figure>
 </div>
 </section>
-<section id="building-an-api-client-1" class="slide level2">
-<h2>Building an API client</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span>
-<span id="cb1-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="nominatim-api-client" class="slide level2">
+<h2>Nominatim API client</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Nominatim API URL ----</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
 <span id="cb2-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
 <span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a><span class="co"># Address to search for ----</span></span>
-<span id="cb2-5"><a href=""></a>address <span class="ot">&lt;-</span> <span class="st">"Montpellier, France"</span></span>
-<span id="cb2-6"><a href=""></a>address <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">URLencode</span>(address)</span>
-<span id="cb2-7"><a href=""></a>address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>## [1] "Montpellier,%20France"</code></pre>
+<span id="cb2-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb2-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb2-6"><a href=""></a></span>
+<span id="cb2-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
-<span id="cb4-2"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(endpoint, <span class="st">"?q="</span>, address)</span>
-<span id="cb4-3"><a href=""></a>request  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(request, <span class="st">"&amp;format=json&amp;limit=1"</span>)</span>
-<span id="cb4-4"><a href=""></a>request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>## [1] "https://nominatim.openstreetmap.org/search?q=Montpellier,%20France&amp;format=json&amp;limit=1"</code></pre>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="nominatim-api-client-1" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb4-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb4-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
-<span id="cb6-2"><a href=""></a>response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(request) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_perform</span>()</span>
-<span id="cb6-4"><a href=""></a></span>
-<span id="cb6-5"><a href=""></a><span class="co"># Check response status ----</span></span>
-<span id="cb6-6"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_status</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Append request parameters ----</span></span>
+<span id="cb6-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> <span class="st">"Montpellier"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb6-5"><a href=""></a></span>
+<span id="cb6-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France</code></pre>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="nominatim-api-client-2" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb8-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb8-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># Append request parameters ----</span></span>
+<span id="cb10-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> <span class="st">"Montpellier"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb10-5"><a href=""></a></span>
+<span id="cb10-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Append response parameters ----</span></span>
+<span id="cb12-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb12-5"><a href=""></a></span>
+<span id="cb12-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France&amp;
+format=json&amp;limit=1</code></pre>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="nominatim-api-client-3" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb14-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb14-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb14-6"><a href=""></a></span>
+<span id="cb14-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co"># Append request parameters ----</span></span>
+<span id="cb16-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> <span class="st">"Montpellier"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb16-5"><a href=""></a></span>
+<span id="cb16-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># Append response parameters ----</span></span>
+<span id="cb18-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb18-5"><a href=""></a></span>
+<span id="cb18-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France&amp;
+format=json&amp;limit=1</code></pre>
+</div><div class="column" style="width:50%;">
+<p><strong>2. Send the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
+<span id="cb20-2"><a href=""></a>http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb20-3"><a href=""></a></span>
+<span id="cb20-4"><a href=""></a>http_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Status: 200 OK
+Content-Type: application/json</code></pre>
+</div></div>
+</section>
+<section id="nominatim-api-client-4" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb22-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb22-3"><a href=""></a></span>
+<span id="cb22-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb22-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb22-6"><a href=""></a></span>
+<span id="cb22-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="co"># Append request parameters ----</span></span>
+<span id="cb24-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> <span class="st">"Montpellier"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb24-5"><a href=""></a></span>
+<span id="cb24-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># Append response parameters ----</span></span>
+<span id="cb26-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb26-5"><a href=""></a></span>
+<span id="cb26-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France&amp;
+format=json&amp;limit=1</code></pre>
+</div><div class="column" style="width:50%;">
+<p><strong>2. Send the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
+<span id="cb28-2"><a href=""></a>http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb28-3"><a href=""></a></span>
+<span id="cb28-4"><a href=""></a>http_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Status: 200 OK
+Content-Type: application/json</code></pre>
+<p><br></p>
+<p><strong>3. Check response status</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="co"># Check response status ----</span></span>
+<span id="cb30-2"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_status</span>(http_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 200</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Parse response content ----</span></span>
-<span id="cb8-2"><a href=""></a>content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(response)</span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="co"># Clean output ----</span></span>
-<span id="cb8-5"><a href=""></a>content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
-<span id="cb8-6"><a href=""></a>content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
-<span id="cb8-7"><a href=""></a>                      <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
-<span id="cb8-8"><a href=""></a>                      <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
-<span id="cb8-9"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section>
+<section id="nominatim-api-client-5" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Build the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb32-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a><span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb32-5"><a href=""></a>http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb32-6"><a href=""></a></span>
+<span id="cb32-7"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="co"># Append request parameters ----</span></span>
+<span id="cb34-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> <span class="st">"Montpellier"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb34-5"><a href=""></a></span>
+<span id="cb34-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France</code></pre>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="co"># Append response parameters ----</span></span>
+<span id="cb36-2"><a href=""></a>http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb36-4"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb36-5"><a href=""></a></span>
+<span id="cb36-6"><a href=""></a>http_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>https://nominatim.openstreetmap.org/search?city=Montpellier&amp;country=France&amp;
+format=json&amp;limit=1</code></pre>
+</div><div class="column" style="width:50%;">
+<p><strong>2. Send the HTTP request</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="co"># Send HTTP request  ----</span></span>
+<span id="cb38-2"><a href=""></a>http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb38-3"><a href=""></a></span>
+<span id="cb38-4"><a href=""></a>http_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Status: 200 OK
+Content-Type: application/json</code></pre>
+<p><br></p>
+<p><strong>3. Check response status</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># Check response status ----</span></span>
+<span id="cb40-2"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_status</span>(http_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] 200</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>4. Check response content type</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># Check response status ----</span></span>
+<span id="cb42-2"><a href=""></a>httr2<span class="sc">::</span><span class="fu">resp_content_type</span>(http_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] "application/json"</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="nominatim-api-client-6" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>5. Parse response content</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="co"># Parse response content ----</span></span>
+<span id="cb44-2"><a href=""></a>content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(http_response)</span>
+<span id="cb44-3"><a href=""></a></span>
+<span id="cb44-4"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [[1]]
+## [[1]]$place_id
+## [1] 104509929
+## 
+## [[1]]$licence
+## [1] "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright"
+## 
+## [[1]]$osm_type
+## [1] "relation"
+## 
+## [[1]]$osm_id
+## [1] 28722
+## 
+## [[1]]$lat
+## [1] "43.6112422"
+## 
+## [[1]]$lon
+## [1] "3.8767337"
+## 
+## [[1]]$class
+## [1] "boundary"
+## 
+## [[1]]$type
+## [1] "administrative"
+## 
+## [[1]]$place_rank
+## [1] 16
+## 
+## [[1]]$importance
+## [1] 0.6880008
+## 
+## [[1]]$addresstype
+## [1] "city"
+## 
+## [[1]]$name
+## [1] "Montpellier"
+## 
+## [[1]]$display_name
+## [1] "Montpellier, Hérault, Occitanie, France métropolitaine, France"
+## 
+## [[1]]$boundingbox
+## [[1]]$boundingbox[[1]]
+## [1] "43.5667083"
+## 
+## [[1]]$boundingbox[[2]]
+## [1] "43.6533580"
+## 
+## [[1]]$boundingbox[[3]]
+## [1] "3.8070597"
+## 
+## [[1]]$boundingbox[[4]]
+## [1] "3.9413208"</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="co"># Object type ----</span></span>
+<span id="cb46-2"><a href=""></a><span class="fu">class</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] "list"</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="co"># Object dimensions ----</span></span>
+<span id="cb48-2"><a href=""></a><span class="fu">length</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] 1</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="nominatim-api-client-7" class="slide level2">
+<h2>Nominatim API client</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>5. Parse response content</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="co"># Parse response content ----</span></span>
+<span id="cb50-2"><a href=""></a>content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(http_response)</span>
+<span id="cb50-3"><a href=""></a></span>
+<span id="cb50-4"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [[1]]
+## [[1]]$place_id
+## [1] 104509929
+## 
+## [[1]]$licence
+## [1] "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright"
+## 
+## [[1]]$osm_type
+## [1] "relation"
+## 
+## [[1]]$osm_id
+## [1] 28722
+## 
+## [[1]]$lat
+## [1] "43.6112422"
+## 
+## [[1]]$lon
+## [1] "3.8767337"
+## 
+## [[1]]$class
+## [1] "boundary"
+## 
+## [[1]]$type
+## [1] "administrative"
+## 
+## [[1]]$place_rank
+## [1] 16
+## 
+## [[1]]$importance
+## [1] 0.6880008
+## 
+## [[1]]$addresstype
+## [1] "city"
+## 
+## [[1]]$name
+## [1] "Montpellier"
+## 
+## [[1]]$display_name
+## [1] "Montpellier, Hérault, Occitanie, France métropolitaine, France"
+## 
+## [[1]]$boundingbox
+## [[1]]$boundingbox[[1]]
+## [1] "43.5667083"
+## 
+## [[1]]$boundingbox[[2]]
+## [1] "43.6533580"
+## 
+## [[1]]$boundingbox[[3]]
+## [1] "3.8070597"
+## 
+## [[1]]$boundingbox[[4]]
+## [1] "3.9413208"</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="co"># Object type ----</span></span>
+<span id="cb52-2"><a href=""></a><span class="fu">class</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] "list"</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="co"># Object dimensions ----</span></span>
+<span id="cb54-2"><a href=""></a><span class="fu">length</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] 1</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>6. Clean data</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="co"># Clean output ----</span></span>
+<span id="cb56-2"><a href=""></a>content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
+<span id="cb56-3"><a href=""></a></span>
+<span id="cb56-4"><a href=""></a>content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
+<span id="cb56-5"><a href=""></a>                      <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
+<span id="cb56-6"><a href=""></a>                      <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
+<span id="cb56-7"><a href=""></a>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##          name      lon      lat
 ## 1 Montpellier 3.876734 43.61124</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>maps<span class="sc">::</span><span class="fu">map</span>(<span class="at">regions =</span> <span class="st">"France"</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span>
-<span id="cb10-2"><a href=""></a><span class="fu">points</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb10-3"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> content<span class="sc">$</span><span class="st">"lon"</span>, <span class="at">y =</span> content<span class="sc">$</span><span class="st">"lat"</span>, <span class="at">labels =</span> content<span class="sc">$</span><span class="st">"name"</span>, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">family =</span> <span class="st">"serif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="visualization" class="slide level2">
+<h2>Visualization</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="co"># Install required package ----</span></span>
+<span id="cb58-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="co"># Map France boundary ----</span></span>
+<span id="cb59-2"><a href=""></a>maps<span class="sc">::</span><span class="fu">map</span>(<span class="at">regions =</span> <span class="st">"France"</span>, </span>
+<span id="cb59-3"><a href=""></a>          <span class="at">fill    =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb59-4"><a href=""></a>          <span class="at">col     =</span> <span class="st">"black"</span>)</span>
+<span id="cb59-5"><a href=""></a></span>
+<span id="cb59-6"><a href=""></a><span class="co"># Add retrieved coordinates ----</span></span>
+<span id="cb59-7"><a href=""></a><span class="fu">points</span>(<span class="at">x   =</span> content<span class="sc">$</span><span class="st">"lon"</span>, </span>
+<span id="cb59-8"><a href=""></a>       <span class="at">y   =</span> content<span class="sc">$</span><span class="st">"lat"</span>, </span>
+<span id="cb59-9"><a href=""></a>       <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb59-10"><a href=""></a>       <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb59-11"><a href=""></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb59-12"><a href=""></a></span>
+<span id="cb59-13"><a href=""></a><span class="co"># Add retrieved name ----</span></span>
+<span id="cb59-14"><a href=""></a><span class="fu">text</span>(<span class="at">x      =</span> content<span class="sc">$</span><span class="st">"lon"</span>, </span>
+<span id="cb59-15"><a href=""></a>     <span class="at">y      =</span> content<span class="sc">$</span><span class="st">"lat"</span>, </span>
+<span id="cb59-16"><a href=""></a>     <span class="at">labels =</span> content<span class="sc">$</span><span class="st">"name"</span>, </span>
+<span id="cb59-17"><a href=""></a>     <span class="at">pos    =</span> <span class="dv">2</span>, </span>
+<span id="cb59-18"><a href=""></a>     <span class="at">col    =</span> <span class="st">"white"</span>, </span>
+<span id="cb59-19"><a href=""></a>     <span class="at">family =</span> <span class="st">"serif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column center" style="width:50%;">
+<div class="cell" data-layout-align="right">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-right">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="384"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-51-1.png" class="quarto-figure quarto-figure-right" width="384"></p>
 </figure>
 </div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="code-factorisation" class="slide level2">
+<h2>Code factorisation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Function definition</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a>get_coords_from_location <span class="ot">&lt;-</span> <span class="cf">function</span>(city, country) {</span>
+<span id="cb60-2"><a href=""></a>  </span>
+<span id="cb60-3"><a href=""></a>  <span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb60-4"><a href=""></a>  endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb60-5"><a href=""></a></span>
+<span id="cb60-6"><a href=""></a>  <span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb60-7"><a href=""></a>  http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb60-8"><a href=""></a>  </span>
+<span id="cb60-9"><a href=""></a>  <span class="co"># Append request parameters ----</span></span>
+<span id="cb60-10"><a href=""></a>  http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb60-11"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> city) <span class="sc">|&gt;</span> </span>
+<span id="cb60-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> country) <span class="sc">|&gt;</span> </span>
+<span id="cb60-13"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb60-14"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb60-15"><a href=""></a>  </span>
+<span id="cb60-16"><a href=""></a>  <span class="co"># Send HTTP request  ----</span></span>
+<span id="cb60-17"><a href=""></a>  http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb60-18"><a href=""></a>  </span>
+<span id="cb60-19"><a href=""></a>  <span class="co"># Check response status ----</span></span>
+<span id="cb60-20"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">resp_check_status</span>(http_response)</span>
+<span id="cb60-21"><a href=""></a>  </span>
+<span id="cb60-22"><a href=""></a>  <span class="co"># Parse response content ----</span></span>
+<span id="cb60-23"><a href=""></a>  content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(http_response)</span>
+<span id="cb60-24"><a href=""></a>  </span>
+<span id="cb60-25"><a href=""></a>  <span class="co"># Clean output ----</span></span>
+<span id="cb60-26"><a href=""></a>  content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
+<span id="cb60-27"><a href=""></a>  content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
+<span id="cb60-28"><a href=""></a>                        <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
+<span id="cb60-29"><a href=""></a>                        <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
+<span id="cb60-30"><a href=""></a>  content</span>
+<span id="cb60-31"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="code-factorisation-1" class="slide level2">
+<h2>Code factorisation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Function definition</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a>get_coords_from_location <span class="ot">&lt;-</span> <span class="cf">function</span>(city, country) {</span>
+<span id="cb61-2"><a href=""></a>  </span>
+<span id="cb61-3"><a href=""></a>  <span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb61-4"><a href=""></a>  endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb61-5"><a href=""></a></span>
+<span id="cb61-6"><a href=""></a>  <span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb61-7"><a href=""></a>  http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb61-8"><a href=""></a>  </span>
+<span id="cb61-9"><a href=""></a>  <span class="co"># Append request parameters ----</span></span>
+<span id="cb61-10"><a href=""></a>  http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb61-11"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> city) <span class="sc">|&gt;</span> </span>
+<span id="cb61-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> country) <span class="sc">|&gt;</span> </span>
+<span id="cb61-13"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb61-14"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb61-15"><a href=""></a>  </span>
+<span id="cb61-16"><a href=""></a>  <span class="co"># Send HTTP request  ----</span></span>
+<span id="cb61-17"><a href=""></a>  http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb61-18"><a href=""></a>  </span>
+<span id="cb61-19"><a href=""></a>  <span class="co"># Check response status ----</span></span>
+<span id="cb61-20"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">resp_check_status</span>(http_response)</span>
+<span id="cb61-21"><a href=""></a>  </span>
+<span id="cb61-22"><a href=""></a>  <span class="co"># Parse response content ----</span></span>
+<span id="cb61-23"><a href=""></a>  content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(http_response)</span>
+<span id="cb61-24"><a href=""></a>  </span>
+<span id="cb61-25"><a href=""></a>  <span class="co"># Clean output ----</span></span>
+<span id="cb61-26"><a href=""></a>  content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
+<span id="cb61-27"><a href=""></a>  content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
+<span id="cb61-28"><a href=""></a>                        <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
+<span id="cb61-29"><a href=""></a>                        <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
+<span id="cb61-30"><a href=""></a>  content</span>
+<span id="cb61-31"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Function usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="co"># Retrieve coordinates ----</span></span>
+<span id="cb62-2"><a href=""></a><span class="fu">get_coords_from_location</span>(<span class="at">city =</span> <span class="st">"Montpellier"</span>, <span class="at">country =</span> <span class="st">"France"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##          name      lon      lat
+## 1 Montpellier 3.876734 43.61124</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="code-factorisation-2" class="slide level2">
+<h2>Code factorisation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Function definition</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a>get_coords_from_location <span class="ot">&lt;-</span> <span class="cf">function</span>(city, country) {</span>
+<span id="cb64-2"><a href=""></a>  </span>
+<span id="cb64-3"><a href=""></a>  <span class="co"># Nominatim API endpoint ----</span></span>
+<span id="cb64-4"><a href=""></a>  endpoint <span class="ot">&lt;-</span> <span class="st">"https://nominatim.openstreetmap.org/search"</span></span>
+<span id="cb64-5"><a href=""></a></span>
+<span id="cb64-6"><a href=""></a>  <span class="co"># Prepare the HTTP request ----</span></span>
+<span id="cb64-7"><a href=""></a>  http_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(endpoint)</span>
+<span id="cb64-8"><a href=""></a>  </span>
+<span id="cb64-9"><a href=""></a>  <span class="co"># Append request parameters ----</span></span>
+<span id="cb64-10"><a href=""></a>  http_request <span class="ot">&lt;-</span> http_request <span class="sc">|&gt;</span> </span>
+<span id="cb64-11"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">city    =</span> city) <span class="sc">|&gt;</span> </span>
+<span id="cb64-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">country =</span> country) <span class="sc">|&gt;</span> </span>
+<span id="cb64-13"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">format =</span> <span class="st">"json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb64-14"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">limit  =</span> <span class="dv">1</span>)</span>
+<span id="cb64-15"><a href=""></a>  </span>
+<span id="cb64-16"><a href=""></a>  <span class="co"># Send HTTP request  ----</span></span>
+<span id="cb64-17"><a href=""></a>  http_response <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform</span>(http_request)</span>
+<span id="cb64-18"><a href=""></a>  </span>
+<span id="cb64-19"><a href=""></a>  <span class="co"># Check response status ----</span></span>
+<span id="cb64-20"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">resp_check_status</span>(http_response)</span>
+<span id="cb64-21"><a href=""></a>  </span>
+<span id="cb64-22"><a href=""></a>  <span class="co"># Parse response content ----</span></span>
+<span id="cb64-23"><a href=""></a>  content <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(http_response)</span>
+<span id="cb64-24"><a href=""></a>  </span>
+<span id="cb64-25"><a href=""></a>  <span class="co"># Clean output ----</span></span>
+<span id="cb64-26"><a href=""></a>  content <span class="ot">&lt;-</span> content[[<span class="dv">1</span>]]</span>
+<span id="cb64-27"><a href=""></a>  content <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"name"</span> <span class="ot">=</span> content<span class="sc">$</span><span class="st">"name"</span>,</span>
+<span id="cb64-28"><a href=""></a>                        <span class="st">"lon"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lon"</span>),</span>
+<span id="cb64-29"><a href=""></a>                        <span class="st">"lat"</span>  <span class="ot">=</span> <span class="fu">as.numeric</span>(content<span class="sc">$</span><span class="st">"lat"</span>))</span>
+<span id="cb64-30"><a href=""></a>  content</span>
+<span id="cb64-31"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Function usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="co"># Retrieve coordinates ----</span></span>
+<span id="cb65-2"><a href=""></a><span class="fu">get_coords_from_location</span>(<span class="at">city =</span> <span class="st">"Montpellier"</span>, <span class="at">country =</span> <span class="st">"France"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##          name      lon      lat
+## 1 Montpellier 3.876734 43.61124</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>Automation</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a><span class="co"># List of cities ----</span></span>
+<span id="cb67-2"><a href=""></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Montpellier"</span>, <span class="st">"Paris"</span>, <span class="st">"Strasbourg"</span>, <span class="st">"Grenoble"</span>, <span class="st">"Bourges"</span>)</span>
+<span id="cb67-3"><a href=""></a></span>
+<span id="cb67-4"><a href=""></a><span class="co"># Retrieve coordinates ----</span></span>
+<span id="cb67-5"><a href=""></a>coords <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb67-6"><a href=""></a></span>
+<span id="cb67-7"><a href=""></a><span class="cf">for</span> (city <span class="cf">in</span> cities) {</span>
+<span id="cb67-8"><a href=""></a>  </span>
+<span id="cb67-9"><a href=""></a>  coord <span class="ot">&lt;-</span> <span class="fu">get_coords_from_location</span>(<span class="at">city =</span> city, <span class="at">country =</span> <span class="st">"France"</span>)</span>
+<span id="cb67-10"><a href=""></a>  coords <span class="ot">&lt;-</span> <span class="fu">rbind</span>(coords, coord)</span>
+<span id="cb67-11"><a href=""></a>}</span>
+<span id="cb67-12"><a href=""></a></span>
+<span id="cb67-13"><a href=""></a>coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##          name      lon      lat
+## 1 Montpellier 3.876734 43.61124
+## 2       Paris 2.320041 48.85889
+## 3  Strasbourg 7.750713 48.58461
+## 4    Grenoble 5.735782 45.18756
+## 5     Bourges 2.399125 47.08117</code></pre>
 </div>
 </div>
 </div></div>
