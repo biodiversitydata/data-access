@@ -420,11 +420,11 @@ install.packages("dplyr")
 #| eval: false
 
 # Wikipedia URL ----
-base_url <- "https://fr.wikipedia.org/"
+base_url <- "https://fr.wikipedia.org"
 
 # Page URL ----
 page_url <- paste0(base_url,
-                   "wiki/",
+                   "/wiki/",
                    "Liste_des_communes_de_France_les_plus_peuplées")
 ```
 
@@ -483,11 +483,11 @@ install.packages("dplyr")
 #| eval: false
 
 # Wikipedia URL ----
-base_url <- "https://fr.wikipedia.org/"
+base_url <- "https://fr.wikipedia.org"
 
 # Page URL ----
 page_url <- paste0(base_url,
-                   "wiki/",
+                   "/wiki/",
                    "Liste_des_communes_de_France_les_plus_peuplées")
 ```
 
@@ -555,11 +555,11 @@ install.packages("dplyr")
 #| eval: false
 
 # Wikipedia URL ----
-base_url <- "https://fr.wikipedia.org/"
+base_url <- "https://fr.wikipedia.org"
 
 # Page URL ----
 page_url <- paste0(base_url,
-                   "wiki/",
+                   "/wiki/",
                    "Liste_des_communes_de_France_les_plus_peuplées")
 ```
 
@@ -647,11 +647,11 @@ install.packages("dplyr")
 #| eval: false
 
 # Wikipedia URL ----
-base_url <- "https://fr.wikipedia.org/"
+base_url <- "https://fr.wikipedia.org"
 
 # Page URL ----
 page_url <- paste0(base_url,
-                   "wiki/",
+                   "/wiki/",
                    "Liste_des_communes_de_France_les_plus_peuplées")
 ```
 
