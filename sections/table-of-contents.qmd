@@ -10,17 +10,23 @@
 
 :::: { .columns }
 
-::: { .column .center width="33%"}
+::: { .column .center width="20%"}
 {{< fa globe size=2x >}}
 Web portals
 :::
 
-::: { .column .center width="33%"}
+::: { .column .center width="20%"}
+:::
+
+::: { .column .center width="20%"}
 {{< fa code size=2x >}}
 Scripting
 :::
 
-::: { .column .center width="33%"}
+::: { .column .center width="20%"}
+:::
+
+::: { .column .center width="20%"}
 {{< fa wrench size=2x >}}
 API
 :::
@@ -31,19 +37,23 @@ API
 
 :::: { .columns }
 
-::: { .column .center width="33%"}
+::: { .column .center width="20%"}
+:::
+
+::: { .column .center width="20%"}
 {{< fa user-clock size=2x >}}
 Exercise
 :::
 
-::: { .column .center width="33%"}
+::: { .column .center width="20%"}
+:::
+
+::: { .column .center width="20%"}
 {{< fa brands css3 size=2x >}}
 Web scraping
 :::
 
-::: { .column .center width="33%"}
-{{< fa book size=2x >}}
-Resources
+::: { .column .center width="20%"}
 :::
 
 ::::

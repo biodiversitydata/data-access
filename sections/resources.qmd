@@ -1,5 +1,0 @@
-# {{< fa book size=1x >}} &nbsp;&nbsp;Resources
-
-## Coming soon
-
-Work in progress...

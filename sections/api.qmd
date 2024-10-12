@@ -185,7 +185,7 @@ _This is a non-exhaustive list_
 
 ## API Client
 
-> It is the tool you use to request the API and parse the response (data).
+> It's the tool you use to request the API and parse the response (data).
 
 <br>
 
@@ -276,7 +276,7 @@ install.packages("httr2")
 
 ## Building an API client
 
-{{< fa circle-right >}} &nbsp; Example with the **OpenStreetMap Nominatim** [API](https://nominatim.org/release-docs/develop/api/Overview/)
+Example with the **OpenStreetMap Nominatim** [API](https://nominatim.org/release-docs/develop/api/Overview/)
 
 > Retrieve coordinates from a location (city, address, building, etc.)
 

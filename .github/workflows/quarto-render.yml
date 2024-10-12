@@ -29,6 +29,9 @@ jobs:
             any::rmarkdown
             any::maps
             any::httr2
+            any::rvest
+            any::janitor
+            any::dplyr
             
       - name: Render qmd files
         run: |

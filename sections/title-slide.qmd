@@ -67,7 +67,7 @@ Author name<br/>
 :::: {.columns .affiliations}
 
 ::: {.column .affiliation width="32%"}
-Data scientist
+Data scientists
 <br/>
 <code>@FRB-CESAB</code>
 &nbsp;
@@ -78,6 +78,7 @@ Data scientist
 
 <!-- Second affiliation -->
 ::: {.column .affiliation width="32%"}
+<!--
 Data scientist
 <br/>
 <code>@FRB-CESAB</code>
@@ -85,6 +86,7 @@ Data scientist
 [{{< fa globe >}}](https://www.fondationbiodiversite.fr/en/about-the-foundation/le-cesab/)
 &nbsp;
 [{{< fa brands github >}}](https://github.com/frbcesab)
+-->
 :::
 
 <!-- Third affiliation -->

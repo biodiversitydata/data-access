@@ -1,5 +1,1457 @@
 # {{< fa brands css3 size=1x >}} &nbsp;&nbsp;Web scraping (15 min)
 
-## Coming soon
+## What is web scraping?
 
-Work in progress...
+- A method to automatically extract data from web pages
+- Converts unstructured web content into structured data
+- Also known as **_screen scraping_**
+
+
+<br>
+
+. . .
+
+> {{< fa triangle-exclamation >}} &nbsp;If available, you should use API: it will give you more reliable data. 
+
+
+. . .
+
+<br>
+
+
+{{< fa circle-right >}} &nbsp;**What is a web page?**
+
+. . .
+
+
+<br><br>
+
+:::: { .columns }
+
+::: { .column .center width="33%"}
+{{< fa brands html5 size=2x >}}
+**HTML**<br>
+Content structuration
+:::
+
+::: { .column .center width="33%"}
+{{< fa brands css3-alt size=2x >}}
+**CSS**<br>
+Formatting
+:::
+
+::: { .column .center width="33%"}
+{{< fa brands js size=2x >}}
+**JavaScript**<br>
+Dynamism & interactivity
+:::
+
+::::
+
+
+## HTML basics
+
+A web page is described and structured by the **HTML** language (**H**yper**T**ext **M**arkup **L**anguage)
+
+<br>
+
+:::: {.columns}
+::: {.column width=45%}
+**HTML code**
+```html
+<!DOCTYPE html>
+<html>
+  
+  ...
+      
+</html>
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+<br>
+
+An HTML page has always this structure
+:::
+
+::::
+
+
+## HTML basics
+
+A web page is described and structured by the **HTML** language (**H**yper**T**ext **M**arkup **L**anguage)
+
+<br>
+
+:::: {.columns}
+::: {.column width=45%}
+**HTML code**
+```html
+<!DOCTYPE html>
+<html>
+  
+  <!-- Document metadata -->
+  <head>
+    ...
+  </head>
+  
+  <!-- Document content -->
+  <body>
+    ...
+  </body>
+      
+</html>
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+<br>
+
+The tag `<html>` contains two children:
+
+- `<head>` contains page metadata
+- `<body>` contains page content
+:::
+
+::::
+
+
+
+## HTML basics
+
+A web page is described and structured by the **HTML** language (**H**yper**T**ext **M**arkup **L**anguage)
+
+<br>
+
+:::: {.columns}
+::: {.column width=45%}
+**HTML code**
+```html
+<!DOCTYPE html>
+<html>
+  
+  <!-- Document metadata -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+  </head>
+  
+  <!-- Document content -->
+  <body>
+    ...
+  </body>
+      
+</html>
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+<br>
+
+The tag `<head>` can contain different metadata:
+
+- `<title>` contains the page title
+- `<meta>` is used to specify the encoding, authors, keywords, etc.
+- `<link>` is used to call external resources
+
+**N.B.** This section is not necessary interesting for web scraping
+:::
+
+::::
+
+
+## HTML basics
+
+A web page is described and structured by the **HTML** language (**H**yper**T**ext **M**arkup **L**anguage)
+
+<br>
+
+:::: {.columns}
+::: {.column width=45%}
+**HTML code**
+```html
+<!DOCTYPE html>
+<html>
+  
+  <!-- Document metadata -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+  </head>
+  
+  <!-- Document content -->
+  <body>
+  
+    <h1 id='section-1'>Header A</h1>
+    
+    <p class='my-class'>A paragraph with <b>bold text</b>.</p>
+    
+    <p>
+      A second paragraph with a 
+      <a href='https://google.com'>link</a>.
+    </p>
+    
+    <img src='images/my-img.png' width='150' height='150' />
+    
+  </body>
+      
+</html>
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+:::
+
+::::
+
+
+## HTML basics
+
+A web page is described and structured by the **HTML** language (**H**yper**T**ext **M**arkup **L**anguage)
+
+<br>
+
+:::: {.columns}
+::: {.column width=45%}
+**HTML code**
+```html
+<!DOCTYPE html>
+<html>
+  
+  <!-- Document metadata -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+  </head>
+  
+  <!-- Document content -->
+  <body>
+  
+    <h1 id='section-1'>Header A</h1>
+    
+    <p class='my-class'>A paragraph with <b>bold text</b>.</p>
+    
+    <p>
+      A second paragraph with a 
+      <a href='https://google.com'>link</a>.
+    </p>
+    
+    <img src='images/my-img.png' width='150' height='150' />
+    
+  </body>
+      
+</html>
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+<br>
+
+- Except for some elements (`<img />`), all HTML tags are **double**.
+- Some elements are **block** tags (`<h1>`, `<p>`, etc.), other are **inline** tags (`<b>`, `<a>`, etc.)
+- Some elements can have **attributes**: `id`, `class`, `href`, `src`, etc.
+
+<br>
+
+{{< fa circle-right >}} &nbsp;Web scraping consists in detecting HTML elements by the `tag`, `class` or the `id` (unique) to extract contents or attributes (`href`, `src`, etc.).
+:::
+
+::::
+
+
+## The rvest package
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+![](images/rvest-screenshot.png)
+
+<br>
+
+Available at: <https://rvest.tidyverse.org/>
+:::
+
+::: {.column width=50%}
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+
+# Install 'rvest' package ----
+install.packages("rvest")
+```
+
+<br>
+
+
+| Function         | Description                                   |
+|:-----------------|:----------------------------------------------|
+| `read_html()`    | Read and parse HTML content                   |
+| `html_element()` | Extract an HTML element(s)                    |
+| `html_attr()`    | Extract an HTML attribute(s)                  |
+| `html_text2()`   | Extract the content of element(s)             |
+| `html_table()`   | Extract a table & convert into a `data.frame` |
+
+: Table: Main functions of `rvest`
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+
+<br>
+
+**1. Build the HTTP request**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Wikipedia URL ----
+base_url <- "https://fr.wikipedia.org"
+
+# Page URL ----
+page_url <- paste0(base_url,
+                   "/wiki/",
+                   "Liste_des_communes_de_France_les_plus_peuplées")
+```
+
+```
+https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+
+<br>
+
+**1. Build the HTTP request**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Wikipedia URL ----
+base_url <- "https://fr.wikipedia.org/"
+
+# Page URL ----
+page_url <- paste0(base_url,
+                   "wiki/",
+                   "Liste_des_communes_de_France_les_plus_peuplées")
+```
+
+```
+https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
+```
+
+<br>
+
+**2. Scrap the HTML page**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Scrap web page ----
+content <- rvest::read_html(page_url)
+```
+```
+{html_document}
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+
+<br>
+
+**1. Build the HTTP request**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Wikipedia URL ----
+base_url <- "https://fr.wikipedia.org/"
+
+# Page URL ----
+page_url <- paste0(base_url,
+                   "wiki/",
+                   "Liste_des_communes_de_France_les_plus_peuplées")
+```
+
+```
+https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
+```
+
+<br>
+
+**2. Scrap the HTML page**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Scrap web page ----
+content <- rvest::read_html(page_url)
+```
+```
+{html_document}
+```
+:::
+
+::: {.column width=50%}
+**3. Extract HTML tables**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Scrap web page ----
+tables <- rvest::html_table(content)
+```
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+
+<br>
+
+**1. Build the HTTP request**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Wikipedia URL ----
+base_url <- "https://fr.wikipedia.org/"
+
+# Page URL ----
+page_url <- paste0(base_url,
+                   "wiki/",
+                   "Liste_des_communes_de_France_les_plus_peuplées")
+```
+
+```
+https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
+```
+
+<br>
+
+**2. Scrap the HTML page**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Scrap web page ----
+content <- rvest::read_html(page_url)
+```
+```
+{html_document}
+```
+:::
+
+::: {.column width=50%}
+**3. Extract HTML tables**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Scrap web page ----
+tables <- rvest::html_table(content)
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Type of output ----
+class(tables)
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Element length ----
+length(tables)
+```
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**0. Install additional packages**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# 'janitor' to clean dirty data ----
+install.packages("janitor")
+
+# 'dplyr' to handle data ----
+install.packages("dplyr")
+```
+
+<br>
+
+**1. Build the HTTP request**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Wikipedia URL ----
+base_url <- "https://fr.wikipedia.org/"
+
+# Page URL ----
+page_url <- paste0(base_url,
+                   "wiki/",
+                   "Liste_des_communes_de_France_les_plus_peuplées")
+```
+
+```
+https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
+```
+
+<br>
+
+**2. Scrap the HTML page**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Scrap web page ----
+content <- rvest::read_html(page_url)
+```
+```
+{html_document}
+```
+:::
+
+::: {.column width=50%}
+**3. Extract HTML tables**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Scrap web page ----
+tables <- rvest::html_table(content)
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Type of output ----
+class(tables)
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Element length ----
+length(tables)
+```
+
+<br>
+
+**4. Extract the good table**
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract second table ----
+datas <- tables[[2]]
+```
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+datas
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+datas
+```
+
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Select top 10 cities ----
+top10 <- datas[2:11, ]
+
+# Filter columns ----
+top10 <- top10[ , c(1, 3:4, 7)]
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+datas
+```
+
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Select top 10 cities ----
+top10 <- datas[2:11, ]
+
+# Filter columns ----
+top10 <- top10[ , c(1, 3:4, 7)]
+```
+:::
+
+::: {.column width=50%}
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Clean column names ----
+top10 <- janitor::clean_names(top10)
+top10
+```
+:::
+::::
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+datas
+```
+
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Select top 10 cities ----
+top10 <- datas[2:11, ]
+
+# Filter columns ----
+top10 <- top10[ , c(1, 3:4, 7)]
+```
+:::
+
+::: {.column width=50%}
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Clean column names ----
+top10 <- janitor::clean_names(top10)
+top10
+```
+
+<br>
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Rename specific column ----
+top10 <- dplyr::rename(top10,
+                       pop2021 = population_legale)
+
+colnames(top10)
+```
+:::
+::::
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output (continued)**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+top10
+```
+
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output (continued)**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+top10
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Convert 'rang2024' to numeric ----
+top10$"rang2024" <- as.integer(top10$"rang2024")
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output (continued)**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Explore data ----
+top10
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Convert 'rang2024' to numeric ----
+top10$"rang2024" <- as.integer(top10$"rang2024")
+```
+:::
+
+::: {.column width=50%}
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Remove footnotes in 'commune' ----
+top10$"commune"     <- gsub("\\[[a-z]\\]", "", top10$"commune")
+
+# Remove footnotes in 'departement' ----
+top10$"departement" <- gsub("\\[[a-z]\\]", "", top10$"departement")
+
+top10
+```
+:::
+::::
+
+
+
+
+## Scrap a table
+
+{{< fa circle-right >}} &nbsp;Example with the **Wikipedia** page [Liste des communes de France les plus peuplées](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es)
+
+<br>
+
+:::: {.columns}
+::: {.column width=50%}
+**5. Clean output (continued)**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Convert 'pop2021' to numeric ----
+top10$"pop2021" <- gsub(" ", "", top10$"pop2021")
+top10$"pop2021" <- as.numeric(top10$"pop2021")
+
+top10
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Detect HTML elements by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the first h2 element ----
+rvest::html_element(content, css = "h2") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of all h2 elements ----
+rvest::html_elements(content, css = "h2") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+:::
+::::
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Detect HTML elements by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the first h2 element ----
+rvest::html_element(content, css = "h2") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of all h2 elements ----
+rvest::html_elements(content, css = "h2") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+**Detect HTML element by ID**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the h2 element detected by its id ----
+rvest::html_element(content, css = "#Cadre_des_données") |> 
+  rvest::html_text2()
+```
+:::
+::::
+
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Detect HTML elements by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the first h2 element ----
+rvest::html_element(content, css = "h2") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of all h2 elements ----
+rvest::html_elements(content, css = "h2") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+**Detect HTML element by ID**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the h2 element detected by its id ----
+rvest::html_element(content, css = "#Cadre_des_données") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Extract attribute**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract URL of the first image ----
+image_url <- rvest::html_element(content, css = "img") |> 
+  rvest::html_attr(name = "src")
+image_url
+```
+:::
+::::
+
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Detect HTML elements by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the first h2 element ----
+rvest::html_element(content, css = "h2") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of all h2 elements ----
+rvest::html_elements(content, css = "h2") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+**Detect HTML element by ID**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the h2 element detected by its id ----
+rvest::html_element(content, css = "#Cadre_des_données") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Extract attribute**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract URL of the first image ----
+image_url <- rvest::html_element(content, css = "img") |> 
+  rvest::html_attr(name = "src")
+image_url
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Build image full URL ----
+image_url <- paste0(base_url, image_url)
+image_url
+```
+:::
+::::
+
+
+
+## Scrap other elements
+
+
+:::: {.columns}
+::: {.column width=50%}
+**Detect HTML element by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of h1 element ----
+rvest::html_element(content, css = "h1") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Detect HTML elements by tag**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the first h2 element ----
+rvest::html_element(content, css = "h2") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of all h2 elements ----
+rvest::html_elements(content, css = "h2") |> 
+  rvest::html_text2()
+```
+:::
+
+::: {.column width=50%}
+**Detect HTML element by ID**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract content of the h2 element detected by its id ----
+rvest::html_element(content, css = "#Cadre_des_données") |> 
+  rvest::html_text2()
+```
+
+<br>
+
+**Extract attribute**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Extract URL of the first image ----
+image_url <- rvest::html_element(content, css = "img") |> 
+  rvest::html_attr(name = "src")
+image_url
+```
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Build image full URL ----
+image_url <- paste0(base_url, image_url)
+image_url
+```
+
+
+<br>
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Download image ----
+download.file(url      = image_url,
+              destfile = "wikipedia_logo.png",
+              mode     = "wb")
+```
+:::
+::::
+
+
+
+## Getting the good selector
+
+- Press `CTRL` + `U` (Firefox) to display the HTML code of the page
+- Right click on a page element and click on `Inspect`
+- Install [**SelectorGadget**](https://rvest.tidyverse.org/articles/selectorgadget.html) bookmarklet in your browser
+
+. . .
+
+<br>
+
+**Dynamic web pages**
+
+- Have a look at the function [`session()`](https://rvest.tidyverse.org/reference/session.html) of the package `rvest`.
+- Have a look at the package [**`RSelenium`**](https://docs.ropensci.org/RSelenium/)
+
+
+
+## Ethics and legalities
+
+Well... it's complicated.
+
+<br>
+<br>
+
+{{< fa circle-right >}} &nbsp;Read the [**Chapter 24.2**](https://r4ds.hadley.nz/webscraping#scraping-ethics-and-legalities) of the book [R for Data Science](https://r4ds.hadley.nz/) by Wickham, Cetinkaya-Rundel & Grolemund.
+
+
+. . .
+
+<br>
+
+{{< fa circle-right >}} &nbsp;Be nice on the web with the package [**`polite`**](https://dmi3kno.github.io/polite/)
+
+
+## Links
+
+{{< fa circle-right >}} &nbsp;Some resources
+
+- [**Web scraping 101**](https://rvest.tidyverse.org/articles/rvest.html) by H. Wickham
+- [**R for Data Science**](https://r4ds.hadley.nz/webscraping) (Chapter 24.2) by H. Wickham, M. Cetinkaya-Rundel & G. Grolemund
+- [**Web Scraping using R**](https://jakobtures.github.io/web-scraping/) by J. Tures
+- [**Intermediate Web Scraping**](https://bookdown.org/f_lennert/workshop-ukraine/introduction-to-how-the-web-is-written-and-rvest.html) by F. Lennert
+
+
+# Thanks
