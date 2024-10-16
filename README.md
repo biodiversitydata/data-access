@@ -15,7 +15,7 @@
 
 <br>
 <p align="center">
-  <a href="https://biodiversitydata.github.io/course-data-access" target="_blank"><b>View presentation</b></a>
+  <a href="https://biodiversitydata.github.io/data-access" target="_blank"><b>View presentation</b></a>
 </p>
 <br>
 
@@ -37,13 +37,13 @@
   <br/>
   
   <!-- Quarto render -->
-  <a href="https://github.com/biodiversitydata/course-data-access/actions/workflows/quarto-render.yml">
-    <img src="https://github.com/biodiversitydata/course-data-access/actions/workflows/quarto-render.yml/badge.svg" alt="GHA render">
+  <a href="https://github.com/biodiversitydata/data-access/actions/workflows/quarto-render.yml">
+    <img src="https://github.com/biodiversitydata/data-access/actions/workflows/quarto-render.yml/badge.svg" alt="GHA render">
   </a>
   
   <!-- GitHub deployment -->
-  <a href="https://github.com/biodiversitydata/course-data-access/actions/workflows/pages/pages-build-deployment">
-    <img src="https://github.com/biodiversitydata/course-data-access/actions/workflows/pages/pages-build-deployment/badge.svg" alt="GHA deploy">
+  <a href="https://github.com/biodiversitydata/data-access/actions/workflows/pages/pages-build-deployment">
+    <img src="https://github.com/biodiversitydata/data-access/actions/workflows/pages/pages-build-deployment/badge.svg" alt="GHA deploy">
   </a>
 </p>
 
@@ -63,7 +63,7 @@
 
 ## Overview
 
-This repository contains files used to generate the online presentation [Biodiversity data access](https://biodiversitydata.github.io/course-data-access) based on [Quarto](https://quarto.org/) and the [RevealJS](https://quarto.org/docs/presentations/revealjs/) framework.
+This repository contains files used to generate the online presentation [Biodiversity data access](https://biodiversitydata.github.io/data-access) based on [Quarto](https://quarto.org/) and the [RevealJS](https://quarto.org/docs/presentations/revealjs/) framework.
 
 
 ## Usage
@@ -82,14 +82,14 @@ To understand the file organisation of this repository, please read this [Wiki](
 
 ## Citation
 
-Casajus N & Coux C (2024) Accessing biodiversity data. Online presentation available at <https://github.com/biodiversitydata/course-data-access/>.
+Casajus N & Coux C (2024) Accessing biodiversity data. Online presentation available at <https://github.com/biodiversitydata/data-access/>.
 
 
 ## Contributing
 
-All types of contributions are encouraged and valued. For more information, check out our [Contributor Guidelines](https://github.com/biodiversitydata/course-data-access/blob/main/CONTRIBUTING.md).
+All types of contributions are encouraged and valued. For more information, check out our [Contributor Guidelines](https://github.com/biodiversitydata/data-access/blob/main/CONTRIBUTING.md).
 
-Please note that the `course-data-access` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the `data-access` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
 
 ## Acknowledgments
