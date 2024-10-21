@@ -32,6 +32,9 @@ jobs:
             any::rvest
             any::janitor
             any::dplyr
+            any::readr
+            any::rtry
+            any::here
             
       - name: Render qmd files
         run: |
