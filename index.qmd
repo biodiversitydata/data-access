@@ -11,7 +11,7 @@ format:
     theme: [default, "styles/main.scss"]
 knitr:
   opts_chunk: 
-    comment: "##" 
+    comment: "##"
 engine: knitr
 ---
 

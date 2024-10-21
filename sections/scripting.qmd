@@ -1,5 +1,16 @@
 # {{< fa code size=1x >}} &nbsp;&nbsp;Scripting (10 min)
 
-## Coming soon
 
-Work in progress...
+## Alternative to manual request to TRY
+
+The quite handy R package `rtry`.
+
+Solves the encoding problem: 
+
+<!-- Side 1 -->
+
+```{r}
+#| echo: true
+
+t2 <- rtry::rtry_import(here::here("data", "36266.txt"))
+```
