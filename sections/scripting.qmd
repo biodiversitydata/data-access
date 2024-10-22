@@ -1,16 +1,80 @@
 # {{< fa code size=1x >}} &nbsp;&nbsp;Scripting (10 min)
 
-
-## Alternative to manual request to TRY
-
-The quite handy R package `rtry`.
-
-Solves the encoding problem: 
-
 <!-- Side 1 -->
+## Queries from R
+
+R lets you download and import the data directly if you have the url, by using the `download.file()` function:
 
 ```{r}
 #| echo: true
+#| eval: false
 
-t2 <- rtry::rtry_import(here::here("data", "36266.txt"))
+download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
 ```
+
+
+
+<!-- Side 1 -->
+## Queries from R
+
+R lets you download and import the data directly if you have the url, by using the `download.file()` function:
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
+```
+
+> Sometimes it sends strange errors on windows. Simply add  `mode = "wb"`
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"), mode = "wb")
+```
+
+
+
+<!-- Side 2 -->
+
+## What if the file is compressed ?
+
+You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
+
+# all of these work fine: 
+friends <- read.table(gzfile( here::here("data", "friends.gz")))
+friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
+friends <- read.table(here::here("data", "friends.gz"))
+```
+
+
+<!-- Side 2 -->
+
+## What if the file is compressed ?
+
+You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
+
+# all of these work fine: 
+friends <- read.table(gzfile( here::here("data", "friends.gz")))
+friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
+friends <- read.table(here::here("data", "friends.gz"))
+```
+
+Other useful packages: `data.table`, `vroom`, ...
+
+
+

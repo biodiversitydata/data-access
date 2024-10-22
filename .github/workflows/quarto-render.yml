@@ -35,6 +35,8 @@ jobs:
             any::readr
             any::rtry
             any::here
+            any::ggplot2
+            any::sf
             
       - name: Render qmd files
         run: |
