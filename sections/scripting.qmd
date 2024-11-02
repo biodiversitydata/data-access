@@ -1,4 +1,4 @@
-# {{< fa code size=1x >}} &nbsp;&nbsp;Scripting (10 min)
+# {{< fa code size=1x >}} &nbsp;&nbsp;Scripting
 
 <!-- Side 1 -->
 ## Queries from R

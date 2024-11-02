@@ -1,4 +1,4 @@
-# {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals (5 min)
+# {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals
 
 <!--Slide 1 -->
 
@@ -180,13 +180,15 @@ Get species IDs:
 
 ## 2. Look at the species list
 
-Get species IDS: 
+Get species IDs: 
 
-- Arabidopsis thaliana : 4341
+- *Arabidopsis thaliana* : 4341
 
-- Bellis perennis: 7173
+- *Bellis perennis* : 7173
 
-- Quercus ilex: 45402
+- *Quercus ilex* : 45402
+
+<br/>
 
 **Get data**
 
