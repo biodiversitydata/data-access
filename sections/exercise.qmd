@@ -1,5 +1,31 @@
 # {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (40 min)
 
-## Coming soon
+## Accessing data
 
-Work in progress...
+**Part 1**: Download New Zealand boundaries from <https://gadm.org/>.
+
+  {{< fa lightbulb >}} &nbsp; Use the function `download.file()`.
+
+<br/>
+
+**Part 2**: Download GBIF occurrences for two bat species endemic to the islands of New Zealand: 
+
+- _Mystacina tuberculata_ (New Zealand lesser short-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_lesser_short-tailed_bat)
+- _Chalinolobus tuberculatus_ (New Zealand long-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_long-tailed_bat)
+
+  {{< fa lightbulb >}} &nbsp; Use the function `rgbif::occ_search()`.<br/>
+  {{< fa triangle-exclamation >}} &nbsp; **Do not forget to export the data**.
+
+<br/>
+
+**Part 3**: Download the [PanTHERIA database](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1), a species-level database of life history, ecology, and geography of extant and recently extinct mammals available [here](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt).
+
+  {{< fa lightbulb >}} &nbsp; Use the function `download.file()` and the function `readr::read_delim()` to import the database.
+
+
+<br/>
+
+**Bonus**: Plot a New Zealand map with GBIF occurrences.
+
+  {{< fa lightbulb >}} &nbsp; Use the packages `sf` and `ggplot2`.
+  
