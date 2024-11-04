@@ -1721,9 +1721,23 @@ Content-Type: application/json</code></pre>
 <h1><i class="fa-solid fa-user-clock fa-1x" aria-label="user-clock"></i> &nbsp;&nbsp;Exercise (40 min)</h1>
 
 </section>
-<section id="coming-soon" class="slide level2">
-<h2>Coming soon</h2>
-<p>Work in progress…</p>
+<section id="accessing-data" class="slide level2">
+<h2>Accessing data</h2>
+<p><strong>Part 1</strong>: Download New Zealand boundaries from <a href="https://gadm.org/" class="uri">https://gadm.org/</a>.</p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> &nbsp; Use the function <code>download.file()</code>.</p>
+<p><br></p>
+<p><strong>Part 2</strong>: Download GBIF occurrences for two bat species endemic to the islands of New Zealand:</p>
+<ul>
+<li><p><em>Mystacina tuberculata</em> (New Zealand lesser short-tailed bat) &nbsp;<a href="https://en.wikipedia.org/wiki/New_Zealand_lesser_short-tailed_bat"><i class="fa-brands fa-wikipedia-w" aria-label="wikipedia-w"></i></a></p></li>
+<li><p><em>Chalinolobus tuberculatus</em> (New Zealand long-tailed bat) &nbsp;<a href="https://en.wikipedia.org/wiki/New_Zealand_long-tailed_bat"><i class="fa-brands fa-wikipedia-w" aria-label="wikipedia-w"></i></a></p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> &nbsp; Use the function <code>rgbif::occ_search()</code>.<br> <i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> &nbsp; <strong>Do not forget to export the data</strong>.</p></li>
+</ul>
+<p><br></p>
+<p><strong>Part 3</strong>: Download the <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1">PanTHERIA database</a>, a species-level database of life history, ecology, and geography of extant and recently extinct mammals available <a href="https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt">here</a>.</p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> &nbsp; Use the function <code>download.file()</code> and the function <code>readr::read_delim()</code> to import the database.</p>
+<p><br></p>
+<p><strong>Bonus</strong>: Plot a New Zealand map with GBIF occurrences.</p>
+<p><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> &nbsp; Use the packages <code>sf</code> and <code>ggplot2</code>.</p>
 <!-- Insert section 'Web scraping' -->
 </section></section>
 <section>
