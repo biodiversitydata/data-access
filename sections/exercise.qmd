@@ -28,3 +28,139 @@
 **Bonus**: Plot a New Zealand map with GBIF occurrences.
 
   {{< fa lightbulb >}} &nbsp; Use the packages `sf` and `ggplot2`.
+
+  
+
+
+## Correction
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Part 1**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download administrative boundaries of NZL ----
+
+gadm_url <- "https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
+filename <- "gadm41_NZL_0.json"
+
+download.file(url      = paste0(gadm_url, filename), 
+              destfile = filename,
+              mode     = "wb")
+```
+
+<br/>
+
+**Part 2**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download GBIF occurrences ----
+
+species_names <- c("Mystacina tuberculata", 
+                   "Chalinolobus tuberculatus")
+
+occ <- rgbif::occ_search(scientificName     = species_names, 
+                         fields             = "minimal",
+                         hasCoordinate      = TRUE,
+                         hasGeospatialIssue = FALSE,
+                         basisOfRecord      = c("OBSERVATION", 
+                                                "HUMAN_OBSERVATION",
+                                                "MACHINE_OBSERVATION",
+                                                "OCCURRENCE"))
+
+
+## Append occurrences -----
+
+occ <- rbind(occ$`Mystacina tuberculata`$"data",
+             occ$`Chalinolobus tuberculatus`$"data")
+```
+:::
+
+::: {.column width=50%}
+**Part 2 (continued)**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Export occurrences ----
+
+write.csv(x         = occ, 
+          file      = "gbif_occurrences.csv", 
+          row.names = FALSE)
+```
+
+<br/>
+
+**Part 3**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download PanTHERIA database ----
+
+esa_url  <- "https://esapubs.org/archive/ecol/E090/184/"
+filename <- "PanTHERIA_1-0_WR05_Aug2008.txt"
+
+download.file(url      = paste0(esa_url, filename), 
+              destfile = filename,
+              mode     = "wb")
+```
+:::
+
+::::
+
+
+## Correction
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Bonus**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Import NZL shapefile ----
+
+nzl <- sf::st_read("gadm41_NZL_0.json") |> 
+  sf::st_transform(crs = 27200)
+
+
+## Convert occurrences into sf object ----
+
+occ_sf <- occ |> 
+  sf::st_as_sf(coords = c("decimalLongitude", "decimalLatitude"),
+               crs    = 4326) |> 
+  sf::st_transform(crs = 27200)
+
+
+## Map occurrences ----
+
+library("ggplot2")
+
+ggplot() +
+  
+  geom_sf(data = nzl) +
+  
+  geom_sf(data = occ_sf, mapping = aes(color = scientificName)) +
+  
+  theme_bw()
+```
+:::
+
+::: {.column .center width=50%}
+![](images/ggplot-map.png){width=90% fig-align='center'}
+:::
+
+::::

@@ -25,3 +25,6 @@ index_files/
 sections/*_files/
 sections/*.html
 /.quarto/
+PanTHERIA_*
+gadm*
+gbif*
