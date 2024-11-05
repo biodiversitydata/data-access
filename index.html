@@ -1765,17 +1765,13 @@ Content-Type: application/json</code></pre>
 <span id="cb87-6"><a href=""></a>occ <span class="ot">&lt;-</span> rgbif<span class="sc">::</span><span class="fu">occ_search</span>(<span class="at">scientificName     =</span> species_names, </span>
 <span id="cb87-7"><a href=""></a>                         <span class="at">fields             =</span> <span class="st">"minimal"</span>,</span>
 <span id="cb87-8"><a href=""></a>                         <span class="at">hasCoordinate      =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb87-9"><a href=""></a>                         <span class="at">hasGeospatialIssue =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb87-10"><a href=""></a>                         <span class="at">basisOfRecord      =</span> <span class="fu">c</span>(<span class="st">"OBSERVATION"</span>, </span>
-<span id="cb87-11"><a href=""></a>                                                <span class="st">"HUMAN_OBSERVATION"</span>,</span>
-<span id="cb87-12"><a href=""></a>                                                <span class="st">"MACHINE_OBSERVATION"</span>,</span>
-<span id="cb87-13"><a href=""></a>                                                <span class="st">"OCCURRENCE"</span>))</span>
-<span id="cb87-14"><a href=""></a></span>
-<span id="cb87-15"><a href=""></a></span>
-<span id="cb87-16"><a href=""></a><span class="do">## Append occurrences -----</span></span>
-<span id="cb87-17"><a href=""></a></span>
-<span id="cb87-18"><a href=""></a>occ <span class="ot">&lt;-</span> <span class="fu">rbind</span>(occ<span class="sc">$</span><span class="st">`</span><span class="at">Mystacina tuberculata</span><span class="st">`</span><span class="sc">$</span><span class="st">"data"</span>,</span>
-<span id="cb87-19"><a href=""></a>             occ<span class="sc">$</span><span class="st">`</span><span class="at">Chalinolobus tuberculatus</span><span class="st">`</span><span class="sc">$</span><span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb87-9"><a href=""></a>                         <span class="at">hasGeospatialIssue =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb87-10"><a href=""></a></span>
+<span id="cb87-11"><a href=""></a></span>
+<span id="cb87-12"><a href=""></a><span class="do">## Append occurrences -----</span></span>
+<span id="cb87-13"><a href=""></a></span>
+<span id="cb87-14"><a href=""></a>occ <span class="ot">&lt;-</span> <span class="fu">rbind</span>(occ<span class="sc">$</span><span class="st">`</span><span class="at">Mystacina tuberculata</span><span class="st">`</span><span class="sc">$</span><span class="st">"data"</span>,</span>
+<span id="cb87-15"><a href=""></a>             occ<span class="sc">$</span><span class="st">`</span><span class="at">Chalinolobus tuberculatus</span><span class="st">`</span><span class="sc">$</span><span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Part 2 (continued)</strong></p>
