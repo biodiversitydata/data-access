@@ -70,11 +70,7 @@ species_names <- c("Mystacina tuberculata",
 occ <- rgbif::occ_search(scientificName     = species_names, 
                          fields             = "minimal",
                          hasCoordinate      = TRUE,
-                         hasGeospatialIssue = FALSE,
-                         basisOfRecord      = c("OBSERVATION", 
-                                                "HUMAN_OBSERVATION",
-                                                "MACHINE_OBSERVATION",
-                                                "OCCURRENCE"))
+                         hasGeospatialIssue = FALSE)
 
 
 ## Append occurrences -----
