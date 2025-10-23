@@ -1,64 +1,109 @@
 # {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals
 
+
 <!--Slide 1 -->
 
-## Imagine: you're doing some species distribution models. 
+## Example: you're doing some species distribution models. 
 
-> You have a **list of species** and their **occurrences in space and time**. 
+> You already have a **list of species** and their **occurrences in space and time**. 
 
 You need: 
 
 - spatial data of France, to map the occurrences
 
-- trait information for each species, for 3 specific traits
+- climate data : temperature and precipitation
+
+
 
 
 
 <!--Slide 2 -->
 
-## Some portals are more straight-foraward than others...
+## Example: you're doing some species distribution models for metropolitan France. 
 
-Example of GADM maps: <https://gadm.org/>
+> You already have a **list of species** and their **occurrences in space and time**. 
+
+You need: 
+
+- spatial data of France, to map the occurrences
+
+- climate data : temperature and precipitation
+
+### A good option is the [GADM portal]<https://gadm.org/>
 
 They have a nice description of [file formats](https://gadm.org/formats.html) too.
 
 
-<!--Slide 3 -->
-### Open in R:
 
+
+<!--Slide 3 -->
+
+## Download data 
+
+> In R the most commonly used formats are `Geopackages` and `Shapefiles`.
+
+#### Open in R: 
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+Have a look at the Geopackage data :
 ```{r}
 #| echo: true
 
 sf::st_layers(here::here("data/gadm41_FRA.gpkg"))
 ```
 
-<!--Slide 3 -->
 
-## Open in R:
+All these layers correspond to different levels of subdivisions.
+:::
+
+::: {.column width=50%}
+
+
+| layer_name              | features                  |
+|:------------------------|:--------------------------|
+| ADM_ADM_0               | France contour            |
+| ADM_ADM_1               | Region countours          |
+| ADM_ADM_2               | Départements contours     |
+
+
+:::
+
+::::
+
+
+
+<!--Slide 4 -->
+
+## Choose a layer for your analysis
+
+Let's keep the regional boundaries :
+
 ```{r}
 #| echo: true
 
 library(ggplot2)
-fr <- sf::read_sf(here::here("data/gadm41_FRA.gpkg"), layer = "ADM_ADM_1")
-head(fr)
+regions <- sf::read_sf(here::here("data/gadm41_FRA.gpkg"), layer = "ADM_ADM_1")
+head(regions)
 ```
 
 
+<!--Slide 5 -->
 
-<!--Slide 3 -->
-
-## Open in R:
+## Plot
 
 ```{r}
 #| echo: true
 
-ggplot(fr) + geom_sf(aes(fill = NAME_1)) + theme_bw() 
-```
+ggplot(regions) + geom_sf(aes(fill = NAME_1)) + theme_bw() 
+²```
 
 
-<!--Slide 4 -->
+<!--Slide 6 -->
 
-## Imagine: you're doing some species distribution models. 
+## Example: you're doing some species distribution models for metropolitan France.
 
 Now you have: 
 
@@ -66,183 +111,80 @@ Now you have:
 
 But you still need:
 
-- trait information for each species, for 3 specific traits
-
-
-<!--Slide 4 -->
-
-## Imagine: you're doing some species distribution models. 
-
-Now you have: 
-
-- spatial data of France, to map the occurrences &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< fa circle-check >}}
-
-But you still need:
-
-- trait information for each species, for 3 specific traits
-
-### Before anything else:
-
-Imagine precisely what kind of data you need. *Draw* the table you want to get.
-
-![](images/sp_traits.png){width=55%}
-
-
-<!--Slide 5 -->
-
-## TRY: a database for plant traits
-
-
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
-
-### 1. Understand how the data is structured
-
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
-
-
-
-<!--Slide 5 -->
-
-## TRY: a database for plant traits
-
-
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
-
-### 1. Understand how the data is structured
-
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
-
-Explore the `trait table`.
-
-Let's try  `leaf area` --> 88 traits contain "leaf area" in their description!
-
-Notice the  `Trait ID`  column, this is what you'll need to query the trait(s) you select.
-
-> Trait IDs examples: LAI = 3116 , Flower size = 3568, Photosynthesis : intercellular CO2 concentration = 49
-
-
-
-
-<!--Slide 5 -->
-
-## TRY: a database for plant traits
-
-
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
-
-### 1. Understand how the data is structured
-
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
-
-Explore the `trait table`.
-
-Let's try  `leaf area` --> 88 traits contain "leaf area" in their description!
-
-Notice the  `Trait ID`  column, this is what you'll need to query the trait(s) you select.
-
-> Trait IDs examples: LAI = 3116 , Flower size = 3568, Photosynthesis : intercellular CO2 concentration = 49
-
-**Other table fields:**
-
-- `ObsNum`: Number of Observations
-
-- `ObsGRNum`: Number of geo-referenced Observations
-
-- `AccSpecNum`: Number of Accepted Species
-
-
-
-
-<!--Slide 6 -->
-
-## 2. Look at the species list
-
-Get species IDs: 
-
-- *Arabidopsis thaliana* : 4341
-
-- *Bellis perennis* : 7173
-
-- *Quercus ilex* : 45402
-
-
-
-<!--Slide 6 -->
-
-## 2. Look at the species list
-
-Get species IDs: 
-
-- *Arabidopsis thaliana* : 4341
-
-- *Bellis perennis* : 7173
-
-- *Quercus ilex* : 45402
-
-<br/>
-
-**Get data**
-
-Register, go to `request data`. Now you can file in the trait IDs.
-
-Submit request. Write a short description of your project. You'll receive a text file by email within a few days.
-
-> Requesting data can take several days.
+- temperature and precipitation data
 
 
 
 <!--Slide 7 -->
 
-## You may encounter encoding issues....
+## WorldClim
 
-```{r}
-#| error: true
-#| echo: true
+> Some portals are more straight-foraward than others...
 
-t <- read.csv(here::here("data/36266.txt"), sep="\t")
-```
+[WorldClim]<https://worldclim.org/> is OK to navigate.
 
-```{r}
-#| echo: true
+You need to know what you are looking for : resolution, time period, monthly or yearly averages, geographic coverage, etc.
 
-readr::guess_encoding(here::here("data/36266.txt"))
-```
+There are typical [Bioclimatic variables]<https://worldclim.org/data/bioclim.html>, among which temperature an precipitation averages for past climate (< 2000).
 
-```{r}
-#| echo: true
+<br> <br>
 
-t <- utils::read.csv2(file = file(here::here("data/36266.txt"), encoding = 'ISO-8859-1'), sep="\t")
-colnames(t)
-```
+For more precise and contemporary climate data, check out CHELSA. Good luck !!
 
-<!-- Side 8 -->
-
-## Alternative import *via* R:
-
-The quite handy R package `rtry`.
-
-Solves the encoding problem: 
+*download > EUR11 > obs > annual > V2.1 > bio01d >* aaaand here you'll find `netCDF` files ".nc" for yearly annual means of air temperature from 1991-2020....
 
 
 
-```{r}
-#| echo: true
-#| warning: false
-
-t2 <- rtry::rtry_import(here::here("data/36266.txt"))
-```
 
 
+<!--Slide 8 -->
 
-And this takes us to the next section...
+## Traits ? The Pandora box (again)
 
 
+> **TRY data portal for plant traits**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
+
+Check out the [data explorer](https://www.try-db.org/de/de.php) section. 
+
+To access TRY traits, you'll need to:
+
+1. register
+2. file a request for which you write a short description of your project
+3. wait for a text file by email within a few days
+
+<br> <br>
+
+> **opentraits portal**: [https://opentraits.org/datasets.html]<https://opentraits.org/datasets.html>
+
+
+
+
+<!--Slide 9 -->
+
+## Retrieving data from repositories
+
+Like [Zenodo]<https://zenodo.org/> or [FigShare]<https://figshare.com/>
+
+This usually happens when you want to retrieve data from a paper or study.
+
+<br> <br>
+
+FORCIS, from [Chaabane *et al.* (2023)]<https://www.nature.com/articles/s41597-023-02264-2>, published their [database]<https://zenodo.org/records/10640925> on Zenodo.
+
+
+
+<!--Slide 10 -->
+
+## Retrieving data from repositories
+
+Like [Zenodo]<https://zenodo.org/> or [FigShare]<https://figshare.com/>
+
+This usually happens when you want to retrieve data from a paper or study.
+
+<br> <br>
+
+FORCIS, from [Chaabane *et al.* (2023)]<https://www.nature.com/articles/s41597-023-02264-2>, published their [database]<https://zenodo.org/records/10640925> on Zenodo.
+
+They also made an [awesome package]<https://docs.ropensci.org/forcis/>, to download, select, filter, visualize the data.
+
+> Because YES, there are tools in R to access data (‾◡◝)
