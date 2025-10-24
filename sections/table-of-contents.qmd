@@ -11,7 +11,8 @@
 :::: { .columns }
 
 ::: { .column .center width="20%"}
-{{< fa globe size=2x >}}
+{{< fa globe size=2x >}}<br>
+
 Web portals
 :::
 
@@ -19,7 +20,8 @@ Web portals
 :::
 
 ::: { .column .center width="20%"}
-{{< fa code size=2x >}}
+{{< fa code size=2x >}}<br>
+
 Scripting
 :::
 
@@ -27,7 +29,8 @@ Scripting
 :::
 
 ::: { .column .center width="20%"}
-{{< fa wrench size=2x >}}
+{{< fa wrench size=2x >}}<br>
+
 API
 :::
 
@@ -41,7 +44,8 @@ API
 :::
 
 ::: { .column .center width="20%"}
-{{< fa user-clock size=2x >}}
+{{< fa user-clock size=2x >}}<br>
+
 Exercise
 :::
 
@@ -49,7 +53,8 @@ Exercise
 :::
 
 ::: { .column .center width="20%"}
-{{< fa brands css3 size=2x >}}
+{{< fa brands css3 size=2x >}}<br>
+
 Web scraping
 :::
 
