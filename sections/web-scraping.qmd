@@ -949,8 +949,8 @@ top10
 #| echo: true
 #| eval: false
 
-# Convert 'rang2024' to numeric ----
-top10$"rang2024" <- as.integer(top10$"rang2024")
+# Convert 'rang2022' to numeric ----
+top10$"rang2022" <- as.integer(top10$"rang2022")
 ```
 :::
 
@@ -984,8 +984,8 @@ top10
 #| echo: true
 #| eval: true
 
-# Convert 'rang2024' to numeric ----
-top10$"rang2024" <- as.integer(top10$"rang2024")
+# Convert 'rang2022' to numeric ----
+top10$"rang2022" <- as.integer(top10$"rang2022")
 ```
 :::
 

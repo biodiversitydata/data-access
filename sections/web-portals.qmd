@@ -3,7 +3,7 @@
 
 <!--Slide 1 -->
 
-## Example: you're doing some species distribution models. 
+## Example: you're doing some species distribution models for metropolitan France. 
 
 > You already have a **list of species** and their **occurrences in space and time**. 
 
@@ -29,7 +29,9 @@ You need:
 
 - climate data : temperature and precipitation
 
-### A good option is the [GADM portal]<https://gadm.org/>
+<br> <br> <br>
+
+**A good option is the [GADM portal](https://gadm.org/)**
 
 They have a nice description of [file formats](https://gadm.org/formats.html) too.
 
@@ -47,8 +49,11 @@ They have a nice description of [file formats](https://gadm.org/formats.html) to
 
 :::: {.columns}
 
-::: {.column width=50%}
+::: {.column width=45%}
+
 Have a look at the Geopackage data :
+
+
 ```{r}
 #| echo: true
 
@@ -57,9 +62,13 @@ sf::st_layers(here::here("data/gadm41_FRA.gpkg"))
 
 
 All these layers correspond to different levels of subdivisions.
+
 :::
 
-::: {.column width=50%}
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
 
 
 | layer_name              | features                  |
@@ -98,7 +107,7 @@ head(regions)
 #| echo: true
 
 ggplot(regions) + geom_sf(aes(fill = NAME_1)) + theme_bw() 
-²```
+```
 
 
 <!--Slide 6 -->
@@ -115,34 +124,141 @@ But you still need:
 
 
 
+
 <!--Slide 7 -->
 
-## WorldClim
+## Some portals are more straight-foraward than others...
 
-> Some portals are more straight-foraward than others...
+#### WorldClim
 
-[WorldClim]<https://worldclim.org/> is OK to navigate.
+:::: {.columns}
+
+::: {.column width=50%}
+
+[WorldClim](https://worldclim.org/) is OK to navigate.
 
 You need to know what you are looking for : resolution, time period, monthly or yearly averages, geographic coverage, etc.
 
-There are typical [Bioclimatic variables]<https://worldclim.org/data/bioclim.html>, among which temperature an precipitation averages for past climate (< 2000).
-
-<br> <br>
-
-For more precise and contemporary climate data, check out CHELSA. Good luck !!
-
-*download > EUR11 > obs > annual > V2.1 > bio01d >* aaaand here you'll find `netCDF` files ".nc" for yearly annual means of air temperature from 1991-2020....
-
-
-
+:::
+::: {.column width=50%}
+:::
+::::
 
 
 <!--Slide 8 -->
 
+## Some portals are more straight-foraward than others...
+
+#### WorldClim
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+[WorldClim](https://worldclim.org/) is OK to navigate.
+
+You need to know what you are looking for : resolution, time period, monthly or yearly averages, geographic coverage, etc.
+
+There are typical [Bioclimatic variables](https://worldclim.org/data/bioclim.html), among which temperature an precipitation averages for past climate (< 2000).
+
+:::
+
+
+::: {.column width=50%}
+
+| BioClim layer ID  | Contents                                                  |
+|:------------------|:----------------------------------------------------------|
+| BIO1              | Annual Mean Temperature                                   |
+| BIO2              | Mean Diurnal Range (Mean of monthly (max temp - min temp))|
+| BIO3              | Isothermality (BIO2/BIO7) (×100)                          |
+| BIO4              | Temperature Seasonality (standard deviation ×100)         |
+| BIO5              | Max Temperature of Warmest Month                          |
+| BIO6              | Min Temperature of Coldest Month                          |
+| ... BI019         | Precipitation of Coldest Quarter                          |
+
+
+
+:::
+
+::::
+
+
+
+<!--Slide 9 -->
+
+## Some portals are more straight-foraward than others...
+
+#### WorldClim
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+[WorldClim](https://worldclim.org/) is OK to navigate.
+
+You need to know what you are looking for : resolution, time period, monthly or yearly averages, geographic coverage, etc.
+
+There are typical [Bioclimatic variables](https://worldclim.org/data/bioclim.html), among which temperature an precipitation averages for past climate (< 2000).
+
+:::
+
+
+::: {.column width=50%}
+
+| BioClim layer ID  | Contents                                                  |
+|:------------------|:----------------------------------------------------------|
+| BIO1              | Annual Mean Temperature                                   |
+| BIO2              | Mean Diurnal Range (Mean of monthly (max temp - min temp))|
+| BIO3              | Isothermality (BIO2/BIO7) (×100)                          |
+| BIO4              | Temperature Seasonality (standard deviation ×100)         |
+| BIO5              | Max Temperature of Warmest Month                          |
+| BIO6              | Min Temperature of Coldest Month                          |
+| ... BI019         | Precipitation of Coldest Quarter                          |
+
+
+
+:::
+
+::::
+
+
+<br> <br>
+
+For more precise and contemporary climate data, check out CHELSA. **Good luck !!**
+
+> *download > EUR11 > obs > annual > V2.1 > bio01d >* aaaand here you'll find `netCDF` files ".nc" for yearly annual means of air temperature from 1991-2020....
+
+
+
+<!--Slide 10 -->
+
 ## Traits ? The Pandora box (again)
 
 
-> **TRY data portal for plant traits**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
+
+<!--Slide 11 -->
+
+## Traits ? The Pandora box (again)
+
+
+#### **TRY data portal for plant traits**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
+
+Check out the [data explorer](https://www.try-db.org/de/de.php) section. 
+
+To access TRY traits, you'll need to:
+
+1. register
+2. file a request for which you write a short description of your project
+3. wait for a text file by email within a few days
+
+
+
+<!--Slide 12 -->
+
+## Traits ? The Pandora box (again)
+
+
+#### **TRY data portal for plant traits**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
 
 Check out the [data explorer](https://www.try-db.org/de/de.php) section. 
 
@@ -154,37 +270,58 @@ To access TRY traits, you'll need to:
 
 <br> <br>
 
-> **opentraits portal**: [https://opentraits.org/datasets.html]<https://opentraits.org/datasets.html>
+#### **opentraits portal**: [https://opentraits.org/datasets.html](https://opentraits.org/datasets.html)
 
 
 
 
-<!--Slide 9 -->
+<!--Slide 13 -->
 
-## Retrieving data from repositories
+## Retrieving data from repositories{.nostretch}
 
-Like [Zenodo]<https://zenodo.org/> or [FigShare]<https://figshare.com/>
+<br> 
+
+:::: { .columns }
+::: { .column .center width="50%"}
+![[Zenodo](https://zenodo.org/)](images/Zenodo_Logo.jpg){width="50%"}
+:::
+::: { .column .center width="50%"}
+![[FigShare](https://figshare.com/)](images/figshare_logo.jpeg){width="50%"}
+:::
+::::
+
 
 This usually happens when you want to retrieve data from a paper or study.
 
 <br> <br>
 
-FORCIS, from [Chaabane *et al.* (2023)]<https://www.nature.com/articles/s41597-023-02264-2>, published their [database]<https://zenodo.org/records/10640925> on Zenodo.
+FORCIS, from [Chaabane *et al.* (2023)](https://www.nature.com/articles/s41597-023-02264-2), published their [database](https://zenodo.org/records/10640925) on Zenodo.
 
 
 
 <!--Slide 10 -->
 
-## Retrieving data from repositories
+## Retrieving data from repositories{.nostretch}
 
-Like [Zenodo]<https://zenodo.org/> or [FigShare]<https://figshare.com/>
+<br> 
+
+:::: { .columns }
+::: { .column .center width="50%"}
+![[Zenodo](https://zenodo.org/)](images/Zenodo_Logo.jpg){width="50%"}
+:::
+::: { .column .center width="50%"}
+![[FigShare](https://figshare.com/)](images/figshare_logo.jpeg){width="50%"}
+:::
+::::
+
 
 This usually happens when you want to retrieve data from a paper or study.
 
 <br> <br>
 
-FORCIS, from [Chaabane *et al.* (2023)]<https://www.nature.com/articles/s41597-023-02264-2>, published their [database]<https://zenodo.org/records/10640925> on Zenodo.
+FORCIS, from [Chaabane *et al.* (2023)](https://www.nature.com/articles/s41597-023-02264-2), published their [database](https://zenodo.org/records/10640925) on Zenodo.
 
-They also made an [awesome package]<https://docs.ropensci.org/forcis/>, to download, select, filter, visualize the data.
 
-> Because YES, there are tools in R to access data (‾◡◝)
+They also made an [awesome package](https://docs.ropensci.org/forcis/), to download, select, filter, visualize the data. 
+
+> Because YES, there are tools in R to access data (‾◡◝) ![](images/forcis_pkg.png){width="10%"}
