@@ -3,6 +3,13 @@
 <!-- Side 1 -->
 ## Queries from R
 
+In the previous section, we saw how to *find* data, and used manual downloads to get a local copy.
+
+You will often need to automatize this process for multiple files.
+
+
+<br> <br>
+
 R lets you download and import the data directly if you have the url, by using the `download.file()` function:
 
 ```{r}
@@ -14,9 +21,16 @@ download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", d
 
 
 
-<!-- Side 1 -->
+<!-- Side 2 -->
 ## Queries from R
 
+In the previous section, we saw how to *find* data, and used manual downloads to get a local copy.
+
+You will often need to automatize this process for multiple files.
+
+
+<br> <br>
+
 R lets you download and import the data directly if you have the url, by using the `download.file()` function:
 
 ```{r}
@@ -25,6 +39,8 @@ R lets you download and import the data directly if you have the url, by using t
 
 download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
 ```
+
+<br>
 
 > Sometimes it sends strange errors on windows. Simply add  `mode = "wb"`
 
@@ -37,9 +53,49 @@ download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", d
 
 
 
-<!-- Side 2 -->
+
+<!-- Side 3 -->
+
+## Queries from R
+
+In the previous section, we saw how to *find* data, and used manual downloads to get a local copy.
+
+You will often need to automatize this process, e.g. if the data is updated regularly.
+
+
+<br> <br>
+
+R lets you download and import the data directly if you have the url, by using the `download.file()` function:
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
+```
+
+<br>
+
+> Sometimes it sends strange errors on windows. Simply add  `mode = "wb"`
+
+```{r}
+#| echo: true
+#| eval: false
+
+download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"), mode = "wb")
+```
+
+<br> <br>
+
+
+
+
+
+<!-- Side 4 -->
 
 ## What if the file is compressed ?
+
+<br> <br>
 
 You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
 
@@ -55,26 +111,92 @@ friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
 friends <- read.table(here::here("data", "friends.gz"))
 ```
 
-
-<!-- Side 2 -->
-
-## What if the file is compressed ?
-
-You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
-
-```{r}
-#| echo: true
-#| eval: false
-
-download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
-
-# all of these work fine: 
-friends <- read.table(gzfile( here::here("data", "friends.gz")))
-friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
-friends <- read.table(here::here("data", "friends.gz"))
-```
+<br> <br>
 
 Other useful packages: `data.table`, `vroom`, ...
 
 
 
+
+<!-- Side 5 -->
+
+## R packages for data download{.nostretch}
+
+Some R packages have been tailored specifically to facilitate the data access.
+
+For WorldClim data: check out the `geodata` package.
+
+```{r}
+?geodata::worldclim_country
+
+```
+
+
+
+<!-- Side 5 -->
+
+## R packages for data download{.nostretch}
+
+Some R packages have been tailored specifically to facilitate the data access.
+
+For WorldClim data: check out the `geodata` package.
+
+```{r}
+?geodata::worldclim_country
+
+```
+
+To retrieve average WorldClim temperatures for France:
+
+```{r}
+#| echo: true
+#| eval: false
+fr <- geodata::worldclim_country("France", var = "tavg", "temp.tif")
+
+# Have a look at this object:
+fr
+```
+
+![](image/spatraster.png) 
+
+
+<!-- Side 6 -->
+
+## R packages for data download{.nostretch}
+
+Some R packages have been tailored specifically to facilitate the data access.
+
+For WorldClim data: check out the `geodata` package.
+
+```{r}
+?geodata::worldclim_country
+
+```
+
+To retrieve average WorldClim temperatures for France:
+
+```{r}
+#| echo: true
+#| eval: false
+fr <- geodata::worldclim_country("France", var = "tavg", "temp.tif")
+
+# Have a look at this object:
+fr
+```
+
+![](image/spatraster.png) 
+
+
+Use the `terra` package to plot it.
+
+```{r}
+#| echo: true
+#| eval: false
+
+
+# plot the first monthly average: 
+terra::plot(fr$FRA_wc2.1_30s_tavg_1)
+
+```
+
+![](image/worldclim_fr_tavg.png)

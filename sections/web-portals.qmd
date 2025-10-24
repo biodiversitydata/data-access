@@ -15,8 +15,6 @@ You need:
 
 
 
-
-
 <!--Slide 2 -->
 
 ## Example: you're doing some species distribution models for metropolitan France. 
@@ -29,9 +27,34 @@ You need:
 
 - climate data : temperature and precipitation
 
-<br> <br> <br>
+ <br> 
 
-**A good option is the [GADM portal](https://gadm.org/)**
+#### Where will you get that from ?
+
+An **open data portal** is any online platform which supports users in accessing collections of open data. They can be governmental (e.g. [data.gouv.fr](www.data.gouv.fr)), or from organizations, NGOs, or from an individual initiative.
+
+
+<!--Slide 2bis -->
+
+## Example: you're doing some species distribution models for metropolitan France. 
+
+> You already have a **list of species** and their **occurrences in space and time**. 
+
+You need: 
+
+- spatial data of France, to map the occurrences
+
+- climate data : temperature and precipitation
+
+ <br> 
+
+#### Where will you get that from ?
+
+An **open data portal** is any online platform which supports users in accessing collections of open data. They can be governmental (e.g. [data.gouv.fr](www.data.gouv.fr)), or from organizations, NGOs, or from an individual initiative.
+
+<br> 
+
+In our case, a good option is the **[GADM portal](https://gadm.org/)**
 
 They have a nice description of [file formats](https://gadm.org/formats.html) too.
 
@@ -73,7 +96,7 @@ All these layers correspond to different levels of subdivisions.
 
 | layer_name              | features                  |
 |:------------------------|:--------------------------|
-| ADM_ADM_0               | France contour            |
+| ADM_ADM_0               | France contours           |
 | ADM_ADM_1               | Region countours          |
 | ADM_ADM_2               | Départements contours     |
 
