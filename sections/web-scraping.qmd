@@ -30,19 +30,22 @@
 
 ::: { .column .center width="33%"}
 {{< fa brands html5 size=2x >}}
-**HTML**<br>
+**HTML**
+<br>
 Content structuration
 :::
 
 ::: { .column .center width="33%"}
 {{< fa brands css3-alt size=2x >}}
-**CSS**<br>
+**CSS**
+<br>
 Formatting
 :::
 
 ::: { .column .center width="33%"}
 {{< fa brands js size=2x >}}
-**JavaScript**<br>
+**JavaScript**
+<br>
 Dynamism & interactivity
 :::
 
