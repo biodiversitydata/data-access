@@ -300,8 +300,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -330,8 +328,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -348,8 +344,6 @@ https://nominatim.openstreetmap.org/search
 http_request <- http_request |> 
   httr2::req_url_query(city    = "Montpellier") |> 
   httr2::req_url_query(country = "France")
-
-http_request
 ```
 
 ```
@@ -377,8 +371,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -395,8 +387,6 @@ https://nominatim.openstreetmap.org/search
 http_request <- http_request |> 
   httr2::req_url_query(city    = "Montpellier") |> 
   httr2::req_url_query(country = "France")
-
-http_request
 ```
 
 ```
@@ -414,8 +404,6 @@ https://nominatim.openstreetmap.org/search?city=Montpellier&country=France
 http_request <- http_request |> 
   httr2::req_url_query(format = "json") |> 
   httr2::req_url_query(limit  = 1)
-
-http_request
 ```
 
 ```
@@ -445,8 +433,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -463,8 +449,6 @@ https://nominatim.openstreetmap.org/search
 http_request <- http_request |> 
   httr2::req_url_query(city    = "Montpellier") |> 
   httr2::req_url_query(country = "France")
-
-http_request
 ```
 
 ```
@@ -482,8 +466,6 @@ https://nominatim.openstreetmap.org/search?city=Montpellier&country=France
 http_request <- http_request |> 
   httr2::req_url_query(format = "json") |> 
   httr2::req_url_query(limit  = 1)
-
-http_request
 ```
 
 ```
@@ -498,10 +480,9 @@ format=json&limit=1
 ```{r}
 #| echo: true
 #| eval: true
+
 # Send HTTP request  ----
 http_response <- httr2::req_perform(http_request)
-
-http_response
 ```
 
 ```
@@ -527,8 +508,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -545,8 +524,6 @@ https://nominatim.openstreetmap.org/search
 http_request <- http_request |> 
   httr2::req_url_query(city    = "Montpellier") |> 
   httr2::req_url_query(country = "France")
-
-http_request
 ```
 
 ```
@@ -564,8 +541,6 @@ https://nominatim.openstreetmap.org/search?city=Montpellier&country=France
 http_request <- http_request |> 
   httr2::req_url_query(format = "json") |> 
   httr2::req_url_query(limit  = 1)
-
-http_request
 ```
 
 ```
@@ -582,8 +557,6 @@ format=json&limit=1
 #| eval: true
 # Send HTTP request  ----
 http_response <- httr2::req_perform(http_request)
-
-http_response
 ```
 
 ```
@@ -622,8 +595,6 @@ endpoint <- "https://nominatim.openstreetmap.org/search"
 
 # Prepare the HTTP request ----
 http_request <- httr2::request(endpoint)
-
-http_request
 ```
 
 ```
@@ -640,8 +611,6 @@ https://nominatim.openstreetmap.org/search
 http_request <- http_request |> 
   httr2::req_url_query(city    = "Montpellier") |> 
   httr2::req_url_query(country = "France")
-
-http_request
 ```
 
 ```
@@ -659,8 +628,6 @@ https://nominatim.openstreetmap.org/search?city=Montpellier&country=France
 http_request <- http_request |> 
   httr2::req_url_query(format = "json") |> 
   httr2::req_url_query(limit  = 1)
-
-http_request
 ```
 
 ```
@@ -677,8 +644,6 @@ format=json&limit=1
 #| eval: true
 # Send HTTP request  ----
 http_response <- httr2::req_perform(http_request)
-
-http_response
 ```
 
 ```
