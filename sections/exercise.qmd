@@ -2,32 +2,31 @@
 
 ## Accessing data
 
-**Part 1**: Download New Zealand boundaries from <https://gadm.org/> (**GeoJSON Level 0**).
+**Part 1**: Download the [PanTHERIA database](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1), a species-level database of life history, ecology, and geography of extant and recently extinct mammals available [here](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt).
 
-  {{< fa lightbulb >}} &nbsp; Use the function `download.file()`.
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) download the dataset
 
-<br/>
+<br />
 
 **Part 2**: Download GBIF occurrences for two bat species endemic to the islands of New Zealand: 
 
 - _Mystacina tuberculata_ (New Zealand lesser short-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_lesser_short-tailed_bat)
 - _Chalinolobus tuberculatus_ (New Zealand long-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_long-tailed_bat)
 
-  {{< fa lightbulb >}} &nbsp; Use the function `rgbif::occ_search()`.<br/>
+  {{< fa lightbulb >}} &nbsp; Use the function [`rgbif::occ_search()`](https://docs.ropensci.org/rgbif/reference/occ_search.html).<br/>
   {{< fa triangle-exclamation >}} &nbsp; **Do not forget to export the data**.
 
+<br />
+
+**Bonus A**: Download New Zealand boundaries from <https://gadm.org/> (**GeoJSON Level 0**).
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html).
+
 <br/>
 
-**Part 3**: Download the [PanTHERIA database](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1), a species-level database of life history, ecology, and geography of extant and recently extinct mammals available [here](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt).
+**Bonus B**: Plot a New Zealand map with GBIF occurrences.
 
-  {{< fa lightbulb >}} &nbsp; Use the function `download.file()` and the function `readr::read_delim()` to import the database.
-
-
-<br/>
-
-**Bonus**: Plot a New Zealand map with GBIF occurrences.
-
-  {{< fa lightbulb >}} &nbsp; Use the packages `sf` and `ggplot2`.
+  {{< fa lightbulb >}} &nbsp; Use the packages [`sf`](https://r-spatial.github.io/sf/) and [`ggplot2`](https://ggplot2.tidyverse.org/).
 
   
 
