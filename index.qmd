@@ -22,6 +22,12 @@ engine: knitr
 ```
 
 
+<!-- Insert section 'Where are we?' -->
+
+```{r}
+#| child: "sections/data-lifecycle.qmd"
+```
+
 <!-- Insert section 'Table of contents' -->
 
 ```{r}
