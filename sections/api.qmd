@@ -771,9 +771,12 @@ length(content)
 # Clean output ----
 content <- content[[1]]
 
-content <- data.frame("name" = content$"name",
-                      "lon"  = as.numeric(content$"lon"),
-                      "lat"  = as.numeric(content$"lat"))
+content <- data.frame(
+  "name" = content$"name",
+  "lon" = as.numeric(content$"lon"),
+  "lat" = as.numeric(content$"lat")
+)
+
 content
 ```
 :::
@@ -804,24 +807,30 @@ install.packages("maps")
 #| eval: false
 
 # Map France boundary ----
-maps::map(regions = "France", 
-          fill    = TRUE, 
-          col     = "black")
+maps::map(
+  regions = "France", 
+  fill = TRUE, 
+  col = "black"
+)
 
 # Add retrieved coordinates ----
-points(x   = content$"lon", 
-       y   = content$"lat", 
-       pch = 19, 
-       cex = 1, 
-       col = "red")
+points(
+  x = content$"lon", 
+  y = content$"lat", 
+  pch = 19, 
+  cex = 1, 
+  col = "red"
+)
 
 # Add retrieved name ----
-text(x      = content$"lon", 
-     y      = content$"lat", 
-     labels = content$"name", 
-     pos    = 2, 
-     col    = "white", 
-     family = "serif")
+text(
+  x = content$"lon", 
+  y = content$"lat", 
+  labels = content$"name", 
+  pos = 2, 
+  col = "white", 
+  family = "serif"
+)
 ```
 :::
 
@@ -899,9 +908,12 @@ get_coords_from_location <- function(city, country) {
   
   # Clean output ----
   content <- content[[1]]
-  content <- data.frame("name" = content$"name",
-                        "lon"  = as.numeric(content$"lon"),
-                        "lat"  = as.numeric(content$"lat"))
+  content <- data.frame(
+    "name" = content$"name",
+    "lon" = as.numeric(content$"lon"),
+    "lat" = as.numeric(content$"lat")
+  )
+
   content
 }
 ```
@@ -949,9 +961,12 @@ get_coords_from_location <- function(city, country) {
   
   # Clean output ----
   content <- content[[1]]
-  content <- data.frame("name" = content$"name",
-                        "lon"  = as.numeric(content$"lon"),
-                        "lat"  = as.numeric(content$"lat"))
+  content <- data.frame(
+    "name" = content$"name",
+    "lon" = as.numeric(content$"lon"),
+    "lat" = as.numeric(content$"lat")
+  )
+  
   content
 }
 ```
@@ -1009,9 +1024,12 @@ get_coords_from_location <- function(city, country) {
   
   # Clean output ----
   content <- content[[1]]
-  content <- data.frame("name" = content$"name",
-                        "lon"  = as.numeric(content$"lon"),
-                        "lat"  = as.numeric(content$"lat"))
+  content <- data.frame(
+    "name" = content$"name",
+    "lon" = as.numeric(content$"lon"),
+    "lat" = as.numeric(content$"lat")
+  )
+  
   content
 }
 ```
@@ -1043,7 +1061,6 @@ cities <- c("Montpellier", "Paris", "Strasbourg", "Grenoble", "Bourges")
 coords <- data.frame()
 
 for (city in cities) {
-  
   coord <- get_coords_from_location(city = city, country = "France")
   coords <- rbind(coords, coord)
 }
