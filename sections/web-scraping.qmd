@@ -32,6 +32,7 @@
 {{< fa brands html5 size=2x >}}
 **HTML**
 <br>
+
 Content structuration
 :::
 
@@ -39,6 +40,7 @@ Content structuration
 {{< fa brands css3-alt size=2x >}}
 **CSS**
 <br>
+
 Formatting
 :::
 
@@ -46,6 +48,7 @@ Formatting
 {{< fa brands js size=2x >}}
 **JavaScript**
 <br>
+
 Dynamism & interactivity
 :::
 
