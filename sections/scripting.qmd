@@ -1,156 +1,211 @@
 # {{< fa code size=1x >}} &nbsp;&nbsp;Scripting
 
 <!-- Side 1 -->
-## Queries from R
+## Download data directly from {{< fa brands r-project >}}
 
-In the previous section, we saw how to *find* data, and used manual downloads to get a local copy.
+In the previous section, we saw how to manually download data from a web browser.
+However, when possible, we recommend you to perfom this task using code (**scripting**).
 
-You will often need to automatize this process for multiple files.
-
-
-<br> <br>
-
-R lets you download and import the data directly if you have the url, by using the `download.file()` function:
-
-```{r}
-#| echo: true
-#| eval: false
-
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
-```
+{{< fa circle-right >}} &nbsp;**Reproducibility** & **Automation**
 
 
+. . .
 
-<!-- Side 2 -->
-## Queries from R
+<br />
 
-In the previous section, we saw how to **find** data, and used manual downloads to get a local copy.
+In {{< fa brands r-project >}}, the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) can be used to download a file from Internet.
 
-You will often need to automatize this process, e.g. if the data is updated regularly.
+<br />
 
+:::: {.columns}
 
-<br> <br>
-
-R lets you download and import the data directly if you have the url, by using the `download.file()` function:
+::: {.column width=60%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
+download.file(
+  url = "https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg",
+  destfile = here::here("data", "fr_2.gpkg"),
+  mode = "wb"
+)
 ```
 
-<br>
+:::
 
-> Sometimes it sends strange errors on windows. Simply add  `mode = "wb"`
+::: {.column width=40%}
+:::
+::::
 
-```{r}
-#| echo: true
-#| eval: false
-
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"), mode = "wb")
-```
-
+> _Set the argument `mode` to `wb`, especially if you use Windows_
 
 
 
 
 <!-- Side 5 -->
 
-## What if the file is compressed ?
+## Where can I find the file URL?
 
-<br> <br>
+{{< fa circle-right >}} &nbsp;Just right-click on a link and copy the URL.
 
-You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
+
+![](images/gadm-rightclick.png){width=60% fig-align="right"}
+
+
+
+## What about compressed file?
+
+You can use the helper functions [`unzip()`](https://rdrr.io/r/utils/unzip.html) and [`gzfile()`](https://rdrr.io/r/base/connections.html) after downloading the compressed file.
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=70%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
+download.file(
+  url = "http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz",
+  destfile = here::here("data", "friends.gz"),
+  mode = "wb"
+)
 
-# all of these work fine: 
-friends <- read.table(gzfile( here::here("data", "friends.gz")))
-friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
+friends <- read.table(gzfile(here::here("data", "friends.gz")))
+```
+
+:::
+
+::: {.column width=30%}
+
+:::
+
+::::
+
+. . .
+
+<br />
+
+But it's unnecessary for most {{< fa brands r-project >}} reading functions
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=70%}
+
+```{r}
+#| echo: true
+#| eval: false
+
 friends <- read.table(here::here("data", "friends.gz"))
 ```
 
-<br> <br>
+:::
 
-Other useful packages: `data.table`, `vroom`, ...
+::: {.column width=30%}
+
+:::
+
+::::
+
+. . .
+
+<br />
+
+Other useful {{< fa brands r-project >}} packages: [`data.table`](https://r-datatable.com/), [`vroom`](https://vroom.r-lib.org/), [`readr`](https://readr.tidyverse.org/), etc.
 
 
 
 
 <!-- Side 6 -->
 
-## R packages for data download{.nostretch}
+## The {{< fa brands r-project >}} package `geodata`
 
-Some R packages have been tailored specifically to facilitate the data access.
+:::: {.columns}
 
-For WorldClim data: check out the `geodata` package.
+::: {.column width=50%}
+Some {{< fa brands r-project >}} packages have been tailored specifically to facilitate the data access using the [`download.file()`](https://rdrr.io/r/utils/download.file.html) function (internally).
 
-```{r}
-#| echo: true
-#| eval: false
+<br />
 
-?geodata::worldclim_country
+{{< fa circle-right >}} &nbsp;This is the case of the [`geodata`](https://github.com/rspatial/geodata) package
+:::
 
-```
+::: {.column width=10%}
+:::
+
+:::: {.column width=40%}
+![](images/geodata.png){width=100%}
+
+:::
+
+::::
 
 
 
 <!-- Side 7 -->
 
-## R packages for data download{.nostretch}
+## The {{< fa brands r-project >}} package `geodata`
 
-Some R packages have been tailored specifically to facilitate the data access.
+For **WorldClim** data
 
-For WorldClim data: check out the `geodata` package.
+<br />
 
-```{r}
-#| echo: true
-#| eval: false
-#| 
-?geodata::worldclim_country
+:::: {.columns}
 
-```
-
-<br> <br>
-
-To retrieve average WorldClim temperatures for France:
-
+::: {.column with=50%}
 ```{r}
 #| echo: true
 #| eval: false
 
-fr <- geodata::worldclim_country("France", var = "tavg", "temp.tif")
+fr <- geodata::worldclim_country(
+  country = "France",
+  var = "tavg",
+  path = "temp.tif"
+)
 
 # Have a look at this object:
 fr
 ```
+:::
 
-![](images/spatraster.png) 
+::: {.column width=50%}
+:::
+
+::::
+
+
+![](images/spatraster.png){width=80%}
 
 
 
 <!-- Side 8 -->
 
-## R packages for data download{.nostretch}
+## The {{< fa brands r-project >}} package `geodata`
 
 
-Use the `terra` package to plot it.
+Use the [`terra`](https://rspatial.github.io/terra/) package to handle and plot the raster (GeoTIFF format)
+
+:::: {.columns}
+
+::: {.column width=50%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-
-# plot the first monthly average: 
-terra::plot(fr$FRA_wc2.1_30s_tavg_1)
-
+# plot the first monthly average:
+terra::plot(fr$"FRA_wc2.1_30s_tavg_1")
 ```
+:::
 
-![](images/worldclim_fr_tavg.png){fig-align="center" width=50%}
+::: {.column}
+:::
 
+::::
 
+![](images/worldclim_fr_tavg.png){fig-align="right" width=50%}
