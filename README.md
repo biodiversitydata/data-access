@@ -82,7 +82,7 @@ To understand the file organisation of this repository, please read this [Wiki](
 
 ## Citation
 
-Casajus N & Coux C (2024) Accessing biodiversity data. Online presentation available at <https://github.com/biodiversitydata/data-access/>.
+Casajus N & Coux C (2025) Accessing biodiversity data. Online presentation available at <https://github.com/biodiversitydata/data-access/>.
 
 
 ## Contributing
