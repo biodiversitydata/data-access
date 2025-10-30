@@ -1,35 +1,35 @@
 # {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (40 min)
 
-## Accessing data
+## Exercise - Accessing data
 
-**Part 1**: Download New Zealand boundaries from <https://gadm.org/> (**GeoJSON Level 0**).
+**Part 1**: Download the [PanTHERIA database](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1), a species-level database of life history, ecology, and geography of extant and recently extinct mammals available [here](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt).
 
-  {{< fa lightbulb >}} &nbsp; Use the function `download.file()`.
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) to download the dataset
 
-<br/>
+<br />
 
-**Part 2**: Download GBIF occurrences for two bat species endemic to the islands of New Zealand: 
+**Part 2**: Download [GBIF](https://www.gbif.org/) occurrences for two bat species endemic to the islands of New Zealand: 
 
 - _Mystacina tuberculata_ (New Zealand lesser short-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_lesser_short-tailed_bat)
 - _Chalinolobus tuberculatus_ (New Zealand long-tailed bat) &nbsp;[{{< fa brands wikipedia-w >}}](https://en.wikipedia.org/wiki/New_Zealand_long-tailed_bat)
 
-  {{< fa lightbulb >}} &nbsp; Use the function `rgbif::occ_search()`.<br/>
-  {{< fa triangle-exclamation >}} &nbsp; **Do not forget to export the data**.
+  {{< fa lightbulb >}} &nbsp; Use the function [`rgbif::occ_search()`](https://docs.ropensci.org/rgbif/reference/occ_search.html) to download species occurrences<br/>
+  {{< fa triangle-exclamation >}} &nbsp; Do not forget to **export the data**
+
+<br />
+
+**Bonus A**: Download New Zealand boundaries from [GADM](https://gadm.org/) (**GeoJSON Level 0**).
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html)
 
 <br/>
 
-**Part 3**: Download the [PanTHERIA database](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1), a species-level database of life history, ecology, and geography of extant and recently extinct mammals available [here](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt).
+**Bonus B**: Plot a New Zealand map with GBIF occurrences.
 
-  {{< fa lightbulb >}} &nbsp; Use the function `download.file()` and the function `readr::read_delim()` to import the database.
-
-
-<br/>
-
-**Bonus**: Plot a New Zealand map with GBIF occurrences.
-
-  {{< fa lightbulb >}} &nbsp; Use the packages `sf` and `ggplot2`.
+  {{< fa lightbulb >}} &nbsp; Use the packages [`sf`](https://r-spatial.github.io/sf/) and [`ggplot2`](https://ggplot2.tidyverse.org/)
 
   
+# 
 
 
 ## Correction
@@ -44,73 +44,59 @@
 #| echo: true
 #| eval: false
 
-## Download administrative boundaries of NZL ----
+## Download PanTHERIA database ----
 
-gadm_url <- "https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
-filename <- "gadm41_NZL_0.json"
+esa_url  <- "https://esapubs.org/archive/ecol/E090/184/"
+filename <- "PanTHERIA_1-0_WR05_Aug2008.txt"
 
-download.file(url      = paste0(gadm_url, filename), 
-              destfile = filename,
-              mode     = "wb")
+download.file(
+  url = paste0(esa_url, filename), 
+  destfile = filename,
+  mode = "wb"
+)
 ```
 
-<br/>
+:::
 
+::: {.column width=50%}
 **Part 2**
 
 ```{r}
 #| echo: true
 #| eval: false
 
+## Species names ----
+
+species_names <- c(
+  "Mystacina tuberculata", 
+  "Chalinolobus tuberculatus"
+)
+
 ## Download GBIF occurrences ----
 
-species_names <- c("Mystacina tuberculata", 
-                   "Chalinolobus tuberculatus")
-
-occ <- rgbif::occ_search(scientificName     = species_names, 
-                         fields             = "minimal",
-                         hasCoordinate      = TRUE,
-                         hasGeospatialIssue = FALSE)
-
+occ <- rgbif::occ_search(
+  scientificName = species_names, 
+  fields = "minimal",
+  hasCoordinate = TRUE,
+  hasGeospatialIssue = FALSE
+)
 
 ## Append occurrences -----
 
-occ <- rbind(occ$`Mystacina tuberculata`$"data",
-             occ$`Chalinolobus tuberculatus`$"data")
-```
-:::
-
-::: {.column width=50%}
-**Part 2 (continued)**
-
-```{r}
-#| echo: true
-#| eval: false
+occ <- rbind(
+  occ$`Mystacina tuberculata`$"data",
+  occ$`Chalinolobus tuberculatus`$"data"
+)
 
 ## Export occurrences ----
 
-write.csv(x         = occ, 
-          file      = "gbif_occurrences.csv", 
-          row.names = FALSE)
+write.csv(
+  x = occ,
+  file = "gbif_occurrences.csv",
+  row.names = FALSE
+)
 ```
 
-<br/>
-
-**Part 3**
-
-```{r}
-#| echo: true
-#| eval: false
-
-## Download PanTHERIA database ----
-
-esa_url  <- "https://esapubs.org/archive/ecol/E090/184/"
-filename <- "PanTHERIA_1-0_WR05_Aug2008.txt"
-
-download.file(url      = paste0(esa_url, filename), 
-              destfile = filename,
-              mode     = "wb")
-```
 :::
 
 ::::
@@ -121,7 +107,38 @@ download.file(url      = paste0(esa_url, filename),
 :::: {.columns}
 
 ::: {.column width=50%}
-**Bonus**
+**Bonus A**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download administrative boundaries of NZL ----
+
+gadm_url <- "https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
+filename <- "gadm41_NZL_0.json"
+
+download.file(
+  url  = paste0(gadm_url, filename), 
+  destfile = filename,
+  mode = "wb"
+)
+
+```
+:::
+
+::: {.column .center width=50%}
+:::
+
+::::
+
+
+## Correction
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Bonus B**
 
 ```{r}
 #| echo: true
@@ -136,8 +153,10 @@ nzl <- sf::st_read("gadm41_NZL_0.json") |>
 ## Convert occurrences into sf object ----
 
 occ_sf <- occ |> 
-  sf::st_as_sf(coords = c("decimalLongitude", "decimalLatitude"),
-               crs    = 4326) |> 
+  sf::st_as_sf(
+    coords = c("decimalLongitude", "decimalLatitude"),
+    crs = 4326
+  ) |> 
   sf::st_transform(crs = 27200)
 
 
@@ -146,11 +165,8 @@ occ_sf <- occ |>
 library("ggplot2")
 
 ggplot() +
-  
   geom_sf(data = nzl) +
-  
   geom_sf(data = occ_sf, mapping = aes(color = scientificName)) +
-  
   theme_bw()
 ```
 :::

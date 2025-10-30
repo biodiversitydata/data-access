@@ -28,3 +28,4 @@ sections/*.html
 PanTHERIA_*
 gadm*
 gbif*
+!images/gadm*

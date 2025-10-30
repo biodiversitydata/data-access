@@ -1,80 +1,211 @@
 # {{< fa code size=1x >}} &nbsp;&nbsp;Scripting
 
 <!-- Side 1 -->
-## Queries from R
+## Download data directly from {{< fa brands r-project >}}
 
-R lets you download and import the data directly if you have the url, by using the `download.file()` function:
+In the previous section, we saw how to manually download data from a web browser.
+However, when possible, we recommend you to perfom this task using code (**scripting**).
+
+{{< fa circle-right >}} &nbsp;**Reproducibility** & **Automation**
+
+
+. . .
+
+<br />
+
+In {{< fa brands r-project >}}, the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) can be used to download a file from Internet.
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=60%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
+download.file(
+  url = "https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg",
+  destfile = here::here("data", "fr_2.gpkg"),
+  mode = "wb"
+)
 ```
 
+:::
+
+::: {.column width=40%}
+:::
+::::
+
+> _Set the argument `mode` to `wb`, especially if you use Windows_
 
 
-<!-- Side 1 -->
-## Queries from R
 
-R lets you download and import the data directly if you have the url, by using the `download.file()` function:
+
+<!-- Side 5 -->
+
+## Where can I find the file URL?
+
+{{< fa circle-right >}} &nbsp;Just right-click on a link and copy the URL.
+
+
+![](images/gadm-rightclick.png){width=60% fig-align="right"}
+
+
+
+## What about compressed file?
+
+You can use the helper functions [`unzip()`](https://rdrr.io/r/utils/unzip.html) and [`gzfile()`](https://rdrr.io/r/base/connections.html) after downloading the compressed file.
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=70%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"))
+download.file(
+  url = "http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz",
+  destfile = here::here("data", "friends.gz"),
+  mode = "wb"
+)
+
+friends <- read.table(gzfile(here::here("data", "friends.gz")))
 ```
 
-> Sometimes it sends strange errors on windows. Simply add  `mode = "wb"`
+:::
+
+::: {.column width=30%}
+
+:::
+
+::::
+
+. . .
+
+<br />
+
+But it's unnecessary for most {{< fa brands r-project >}} reading functions
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=70%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_FRA.gpkg", destfile = here::here("data", "fr_2.gpkg"), mode = "wb")
-```
-
-
-
-<!-- Side 2 -->
-
-## What if the file is compressed ?
-
-You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
-
-```{r}
-#| echo: true
-#| eval: false
-
-download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
-
-# all of these work fine: 
-friends <- read.table(gzfile( here::here("data", "friends.gz")))
-friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
 friends <- read.table(here::here("data", "friends.gz"))
 ```
 
+:::
 
-<!-- Side 2 -->
+::: {.column width=30%}
 
-## What if the file is compressed ?
+:::
 
-You can use the helper functions `unzip()`, `gzfile()` etc but it's unnecessary for most R reading functions:
+::::
+
+. . .
+
+<br />
+
+Other useful {{< fa brands r-project >}} packages: [`data.table`](https://r-datatable.com/), [`vroom`](https://vroom.r-lib.org/), [`readr`](https://readr.tidyverse.org/), etc.
+
+
+
+
+<!-- Side 6 -->
+
+## The {{< fa brands r-project >}} package `geodata`
+
+:::: {.columns}
+
+::: {.column width=50%}
+Some {{< fa brands r-project >}} packages have been tailored specifically to facilitate the data access using the [`download.file()`](https://rdrr.io/r/utils/download.file.html) function (internally).
+
+<br />
+
+{{< fa circle-right >}} &nbsp;This is the case of the [`geodata`](https://github.com/rspatial/geodata) package
+:::
+
+::: {.column width=10%}
+:::
+
+:::: {.column width=40%}
+![](images/geodata.png){width=100%}
+
+:::
+
+::::
+
+
+
+<!-- Side 7 -->
+
+## The {{< fa brands r-project >}} package `geodata`
+
+For **WorldClim** data
+
+<br />
+
+:::: {.columns}
+
+::: {.column with=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+fr <- geodata::worldclim_country(
+  country = "France",
+  var = "tavg",
+  path = "temp.tif"
+)
+
+# Have a look at this object:
+fr
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+![](images/spatraster.png){width=80%}
+
+
+
+<!-- Side 8 -->
+
+## The {{< fa brands r-project >}} package `geodata`
+
+
+Use the [`terra`](https://rspatial.github.io/terra/) package to handle and plot the raster (GeoTIFF format)
+
+:::: {.columns}
+
+::: {.column width=50%}
 
 ```{r}
 #| echo: true
 #| eval: false
 
-download.file("http://www.sociopatterns.org/wp-content/uploads/2015/07/Friendship-network_data_2013.csv.gz", destfile = here::here("data", "friends.gz"))
-
-# all of these work fine: 
-friends <- read.table(gzfile( here::here("data", "friends.gz")))
-friends <- read.csv2(gzfile( here::here("data", "friends.gz")), sep = " ")
-friends <- read.table(here::here("data", "friends.gz"))
+# plot the first monthly average:
+terra::plot(fr$"FRA_wc2.1_30s_tavg_1")
 ```
+:::
 
-Other useful packages: `data.table`, `vroom`, ...
+::: {.column}
+:::
 
+::::
 
-
+![](images/worldclim_fr_tavg.png){fig-align="right" width=50%}

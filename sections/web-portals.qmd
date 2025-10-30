@@ -1,248 +1,290 @@
 # {{< fa globe size=1x >}} &nbsp;&nbsp;Web portals
 
+
+<!--Slide 0 -->
+
+## Web portals
+
+> Any online platform (website) which supports users in accessing collections of open data. They can be governmental (e.g. [data.gouv.fr](www.data.gouv.fr)), or from organizations, NGOs, or from an individual initiative.
+
+. . .
+
+<br />
+
+{{< fa circle-right >}} &nbsp;You access data in a web browser (by clicking)
+
+. . .
+
+<br />
+
+- Click on a ready-to-download file (e.g. GADM)
+- Fill a form to download a user-specific file (e.g. GBIF)
+- Fill a form to get data through a URL (e.g. BirdLife)
+- Sometimes, you need to registrer (e.g. TRY)
+
+
 <!--Slide 1 -->
 
-## Imagine: you're doing some species distribution models. 
+## Case study
 
-> You have a **list of species** and their **occurrences in space and time**. 
+> You're doing some species distribution models for metropolitan France. 
+> You already have a **list of species** and their **occurrences in space and time**. 
 
-You need: 
+Now, you need to retrieve: 
 
-- spatial data of France, to map the occurrences
-
-- trait information for each species, for 3 specific traits
-
+- Spatial boundaries of **France regions** to map the species occurrences
+- **Climate data** (temperature and precipitation) to fit models
 
 
-<!--Slide 2 -->
 
-## Some portals are more straight-foraward than others...
+<!--Slide 2bis -->
 
-Example of GADM maps: <https://gadm.org/>
+## Access data - France regions
 
-They have a nice description of [file formats](https://gadm.org/formats.html) too.
+The [GADM data portal](https://gadm.org/) is a good option to get spatial boundaries of any country in the World at different administrative levels.
+
+
+![](images/gadm-portal.png){width=50% fig-align='center'}
+
+
+
+> They have a nice description of [file formats](https://gadm.org/formats.html).
+
+
+. . .
+
+<br />
+
+{{< fa circle-right >}} &nbsp;Let's use the **Geopackage** format (`.gpkg`)
 
 
 <!--Slide 3 -->
-### Open in R:
+
+## Access data - France regions
+
+Let's list the layers available in the `gadm41_FRA.gpkg` file
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=45%}
 
 ```{r}
 #| echo: true
 
-sf::st_layers(here::here("data/gadm41_FRA.gpkg"))
+sf::st_layers(
+  here::here("data", "gadm41_FRA.gpkg")
+)
 ```
 
-<!--Slide 3 -->
+:::
 
-## Open in R:
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+
+All these layers correspond to different levels of subdivisions.
+
+| Layer name              | Description               |
+|:------------------------|:--------------------------|
+| ADM_ADM_0               | France contours           |
+| ADM_ADM_1               | Region countours          |
+| ADM_ADM_2               | Departments contours      |
+| ADM_ADM_3               | Communes contours         |
+
+
+:::
+
+::::
+
+
+
+<!--Slide 4 -->
+
+## Access data - France regions
+
+Let's import the regional subdivision
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=50%}
+
 ```{r}
 #| echo: true
+#| eval: false
+
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"),
+  layer = "ADM_ADM_1"
+)
+
+head(regions)
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+```{r}
+#| echo: false
+#| eval: true
+
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"), 
+  layer = "ADM_ADM_1", 
+  quiet = TRUE
+)
+
+head(regions)
+```
+
+
+
+## Access data - France regions
+
+Let's import the regional subdivision
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+#| eval: false
+
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"),
+  layer = "ADM_ADM_1"
+)
+
+head(regions)
+```
+:::
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
 
 library(ggplot2)
-fr <- sf::read_sf(here::here("data/gadm41_FRA.gpkg"), layer = "ADM_ADM_1")
-head(fr)
+
+ggplot(regions) + 
+  geom_sf(aes(fill = NAME_1)) + 
+  theme_bw()
 ```
+:::
 
-
-
-<!--Slide 3 -->
-
-## Open in R:
+::::
 
 ```{r}
-#| echo: true
+#| echo: false
+#| eval: true
 
-ggplot(fr) + geom_sf(aes(fill = NAME_1)) + theme_bw() 
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"), 
+  layer = "ADM_ADM_1", 
+  quiet = TRUE
+)
+
+head(regions)
 ```
 
 
-<!--Slide 4 -->
-
-## Imagine: you're doing some species distribution models. 
-
-Now you have: 
-
-- spatial data of France, to map the occurrences &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< fa circle-check >}}
-
-But you still need:
-
-- trait information for each species, for 3 specific traits
-
-
-<!--Slide 4 -->
-
-## Imagine: you're doing some species distribution models. 
-
-Now you have: 
-
-- spatial data of France, to map the occurrences &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< fa circle-check >}}
-
-But you still need:
-
-- trait information for each species, for 3 specific traits
-
-### Before anything else:
-
-Imagine precisely what kind of data you need. *Draw* the table you want to get.
-
-![](images/sp_traits.png){width=55%}
-
-
-<!--Slide 5 -->
-
-## TRY: a database for plant traits
-
-
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
-
-### 1. Understand how the data is structured
-
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
 
 
 
 <!--Slide 5 -->
 
-## TRY: a database for plant traits
+## Access data - France regions
 
+<br />
 
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
+```{r}
+#| echo: false
+#| eval: true
 
-### 1. Understand how the data is structured
+library(ggplot2)
 
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
-
-Explore the `trait table`.
-
-Let's try  `leaf area` --> 88 traits contain "leaf area" in their description!
-
-Notice the  `Trait ID`  column, this is what you'll need to query the trait(s) you select.
-
-> Trait IDs examples: LAI = 3116 , Flower size = 3568, Photosynthesis : intercellular CO2 concentration = 49
-
-
-
-
-<!--Slide 5 -->
-
-## TRY: a database for plant traits
-
-
-> **TRY data portal**: [https://www.try-db.org/TryWeb/dp.php](https://www.try-db.org/TryWeb/dp.php)
-
-### 1. Understand how the data is structured
-
-Check out the [data explorer](https://www.try-db.org/de/de.php) section.
-
-*What are the traits like ? How are they measured ? If there are several measures of the same trait, which one will you choose ?* 
-
-
-Explore the `trait table`.
-
-Let's try  `leaf area` --> 88 traits contain "leaf area" in their description!
-
-Notice the  `Trait ID`  column, this is what you'll need to query the trait(s) you select.
-
-> Trait IDs examples: LAI = 3116 , Flower size = 3568, Photosynthesis : intercellular CO2 concentration = 49
-
-**Other table fields:**
-
-- `ObsNum`: Number of Observations
-
-- `ObsGRNum`: Number of geo-referenced Observations
-
-- `AccSpecNum`: Number of Accepted Species
-
-
+ggplot(regions) + 
+  geom_sf(aes(fill = NAME_1)) + 
+  theme_bw()
+```
 
 
 <!--Slide 6 -->
 
-## 2. Look at the species list
+## Access data - Climate data
 
-Get species IDs: 
+:::: {.columns}
 
-- *Arabidopsis thaliana* : 4341
+::: {.column width=50%}
+![[WorldClim portal](https://worldclim.org/)](images/worldclim.png)
+:::
 
-- *Bellis perennis* : 7173
+::: {.column width=50%}
+![[Chelsa portal](https://www.chelsa-climate.org/)](images/chelsa.png)
+:::
 
-- *Quercus ilex* : 45402
+::::
 
 
+. . .
 
-<!--Slide 6 -->
+<br />
 
-## 2. Look at the species list
-
-Get species IDs: 
-
-- *Arabidopsis thaliana* : 4341
-
-- *Bellis perennis* : 7173
-
-- *Quercus ilex* : 45402
-
-<br/>
-
-**Get data**
-
-Register, go to `request data`. Now you can file in the trait IDs.
-
-Submit request. Write a short description of your project. You'll receive a text file by email within a few days.
-
-> Requesting data can take several days.
+> You need to know what you are looking for: resolution, time period, monthly or yearly averages, geographic coverage, etc.
 
 
 
-<!--Slide 7 -->
+<!--Slide 12 -->
 
-## You may encounter encoding issues....
+## Trait data - The Pandora box
 
-```{r}
-#| error: true
-#| echo: true
 
-t <- read.csv(here::here("data/36266.txt"), sep="\t")
-```
+{{< fa circle-right >}} &nbsp;[TRY data portal](https://www.try-db.org/TryWeb/dp.php) for plant traits
 
-```{r}
-#| echo: true
+To access **TRY** database, you'll need to:
 
-readr::guess_encoding(here::here("data/36266.txt"))
-```
+1. register
+2. fill a request for which you write a short description of your project
+3. wait for a text file by email within a few days
 
-```{r}
-#| echo: true
+. . .
 
-t <- utils::read.csv2(file = file(here::here("data/36266.txt"), encoding = 'ISO-8859-1'), sep="\t")
-colnames(t)
-```
+<br> <br>
 
-<!-- Side 8 -->
-
-## Alternative import *via* R:
-
-The quite handy R package `rtry`.
-
-Solves the encoding problem: 
+{{< fa circle-right >}} &nbsp;[OpenTraits portal](https://opentraits.org/datasets.html)
 
 
 
-```{r}
-#| echo: true
-#| warning: false
 
-t2 <- rtry::rtry_import(here::here("data/36266.txt"))
-```
+<!--Slide 13 -->
 
+## Retrieving data from repositories{.nostretch}
 
+<br> 
 
-And this takes us to the next section...
+:::: { .columns }
+::: { .column .center width="50%"}
+![[Zenodo](https://zenodo.org/)](images/Zenodo_Logo.jpg){width="50%"}
+:::
+::: { .column .center width="50%"}
+![[FigShare](https://figshare.com/)](images/figshare_logo.jpeg){width="50%"}
+:::
+::::
 
+<br>
 
+> This usually happens when you want to retrieve data from a paper or study.
+
+<br> <br>
+
+FORCIS, from [Chaabane *et al.* (2023)](https://www.nature.com/articles/s41597-023-02264-2), published their [database](https://zenodo.org/records/10640925) on Zenodo.
