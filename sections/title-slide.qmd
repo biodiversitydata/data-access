@@ -15,7 +15,7 @@ Accessing biodiversity data
 :::
 
 ::: {.subtitle}
-Web portals, scripting, API & Web scraping
+Web portals, Scripting, API & Web scraping
 :::
 
 ::: {.date}
