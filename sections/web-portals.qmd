@@ -37,7 +37,7 @@ Now, you need to retrieve:
 
 
 
-<!--Slide 2bis -->
+<!--Slide 2 -->
 
 ## Access data - France regions
 
@@ -59,6 +59,33 @@ The [GADM data portal](https://gadm.org/) is a good option to get spatial bounda
 
 
 <!--Slide 3 -->
+
+
+## Access data - France regions
+
+Let's list the layers available in the `gadm41_FRA.gpkg` file
+
+<br />
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+```{r}
+#| echo: true
+
+sf::st_layers(
+  here::here("data", "gadm41_FRA.gpkg")
+)
+```
+
+:::
+
+::: {.column width=45%}
+:::
+
+::::
+
 
 ## Access data - France regions
 
@@ -103,9 +130,59 @@ All these layers correspond to different levels of subdivisions.
 
 <!--Slide 4 -->
 
+
 ## Access data - France regions
 
-Let's import the regional subdivision
+Let's import the regional subdivision:
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+#| eval: false
+
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"),
+  layer = "ADM_ADM_1"
+)
+
+head(regions)
+```
+
+<br/>
+
+```{r}
+#| echo: false
+#| eval: true
+
+regions <- sf::st_read(
+  dsn = here::here("data", "gadm41_FRA.gpkg"), 
+  layer = "ADM_ADM_1", 
+  quiet = TRUE
+)
+
+head(regions)
+```
+
+:::
+
+::: {.column width=50%}
+  
+:::
+
+::::
+
+
+
+
+<!--Slide 4 -->
+
+## Access data - France regions
+
+Let's import the regional subdivision:
 
 <br />
 
@@ -144,11 +221,11 @@ regions <- sf::st_read(
 head(regions)
 ```
 
-
+<!--Slide 4 -->
 
 ## Access data - France regions
 
-Let's import the regional subdivision
+Let's import the regional subdivision:
 
 <br />
 
@@ -219,6 +296,7 @@ ggplot(regions) +
 ```
 
 
+
 <!--Slide 6 -->
 
 ## Access data - Climate data
@@ -244,7 +322,7 @@ ggplot(regions) +
 
 
 
-<!--Slide 12 -->
+<!--Slide 7 -->
 
 ## Trait data - The Pandora box
 
@@ -257,16 +335,30 @@ To access **TRY** database, you'll need to:
 2. fill a request for which you write a short description of your project
 3. wait for a text file by email within a few days
 
-. . .
+
+
+## Trait data - The Pandora box
+
+
+{{< fa circle-right >}} &nbsp;[TRY data portal](https://www.try-db.org/TryWeb/dp.php) for plant traits
+
+To access **TRY** database, you'll need to:
+
+1. register
+2. fill a request for which you write a short description of your project
+3. wait for a text file by email within a few days
+
 
 <br> <br>
 
 {{< fa circle-right >}} &nbsp;[OpenTraits portal](https://opentraits.org/datasets.html)
 
+<br>
+
+{{< fa circle-right >}} &nbsp;A personal favorite: the [AusTraits portal](https://austraits.org/)
 
 
-
-<!--Slide 13 -->
+<!--Slide 8 -->
 
 ## Retrieving data from repositories{.nostretch}
 

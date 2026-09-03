@@ -59,7 +59,7 @@ engine: knitr
 <!-- Insert section 'Exercise' -->
 
 ```{r}
-#| child: "sections/exercise.qmd"
+#| child: "sections/exercise_v2.qmd"
 ```
 
 

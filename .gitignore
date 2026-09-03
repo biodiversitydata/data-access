@@ -29,3 +29,5 @@ PanTHERIA_*
 gadm*
 gbif*
 !images/gadm*
+
+**/*.quarto_ipynb

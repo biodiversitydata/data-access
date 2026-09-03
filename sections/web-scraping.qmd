@@ -169,7 +169,7 @@ The tag `<head>` can contain different metadata:
 - `<meta>` is used to specify the encoding, authors, keywords, etc.
 - `<link>` is used to call external resources
 
-**N.B.** This section is not necessary interesting for web scraping
+**N.B.** This section is not necessarily interesting for web scraping
 :::
 
 ::::
@@ -897,7 +897,7 @@ top10
 
 # Rename specific column ----
 top10 <- dplyr::rename(top10,
-                       pop2021 = population_legale)
+                       pop2023 = population_de_reference)
 
 colnames(top10)
 ```
@@ -955,8 +955,8 @@ top10
 #| echo: true
 #| eval: false
 
-# Convert 'rang2022' to numeric ----
-top10$"rang2022" <- as.integer(top10$"rang2022")
+# Convert 'rang2023' to numeric ----
+top10$"rang2023" <- as.integer(top10$"rang2023")
 ```
 :::
 
@@ -990,8 +990,8 @@ top10
 #| echo: true
 #| eval: true
 
-# Convert 'rang2022' to numeric ----
-top10$"rang2022" <- as.integer(top10$"rang2022")
+# Convert 'rang2023' to numeric ----
+top10$"rang2023" <- as.integer(top10$"rang2023")
 ```
 :::
 
@@ -1030,9 +1030,9 @@ top10
 #| echo: true
 #| eval: true
 
-# Convert 'pop2021' to numeric ----
-top10$"pop2021" <- gsub(" ", "", top10$"pop2021")
-top10$"pop2021" <- as.numeric(top10$"pop2021")
+# Convert 'pop2023' to numeric ----
+top10$"pop2023" <- gsub(" ", "", top10$"pop2023")
+top10$"pop2023" <- as.numeric(top10$"pop2023")
 
 top10
 ```

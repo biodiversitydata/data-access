@@ -1,0 +1,294 @@
+
+
+# {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (40 min)
+
+## Exercise - Accessing data
+
+
+
+**Part 1**: 
+
+* Download the herbarium data "UC1-3c-open-refine.csv", which compiles field observations of plants from Guatemala, available [here](https://docs.gbif.org/course-data-mobilization/exercise-data/). 
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) to download the dataset
+
+<br />
+
+
+## Exercise - Accessing data
+
+**Part 1**: 
+
+* Download the herbarium data "UC1-3c-open-refine.csv", which compiles field observations of plants from Guatemala, available [here](https://docs.gbif.org/course-data-mobilization/exercise-data/). 
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`download.file()`](https://rdrr.io/r/utils/download.file.html) to download the dataset
+
+<br />
+
+* Import the dataset and extract the plant names. How many are there ?
+
+<br />
+
+> We'll focus on 2 species: _Catopsis sessiliflora_ and _Catopsis nutans_. 
+
+
+## Exercise - Accessing data
+
+**Part 2**: 
+<br />
+
+We want to complete the herbarium occurrences of _C. sessiflora_ and _C. nutans_ with extra observations on [GBIF](https://www.gbif.org/). 
+<br />
+
+* Download them through a query in R. 
+<br />
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`rgbif::occ_search()`](https://docs.ropensci.org/rgbif/reference/occ_search.html) to download species occurrences<br/>
+
+
+
+## Exercise - Accessing data
+
+**Part 2**: 
+<br />
+
+We want to complete the herbarium occurrences of _C. sessiflora_ and _C. nutans_ with extra observations on [GBIF](https://www.gbif.org/). 
+<br />
+
+* Download them through a query in R. 
+<br/>
+
+  {{< fa lightbulb >}} &nbsp; Use the function [`rgbif::occ_search()`](https://docs.ropensci.org/rgbif/reference/occ_search.html) to download species occurrences<br/>
+<br />
+
+* Inspect the GBIF dataset. What can you see ?
+<br />
+
+  {{< fa triangle-exclamation >}} &nbsp; Do not forget to **export the data**
+
+#
+
+## Correction
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+**Part 1**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download herbarium data ----
+file_url  <- "https://docs.gbif.org/course-data-mobilization/exercise-data/"
+filename <- "UC1-3c-open-refine.csv"
+
+download.file(
+  url = paste0(file_url, filename), 
+  destfile = "herbarium.csv",
+  mode = "wb"
+)
+```
+
+:::
+
+::: {.column width=55%}
+:::
+
+::::
+
+
+## Correction
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+**Part 1**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download herbarium data ----
+file_url  <- "https://docs.gbif.org/course-data-mobilization/exercise-data/"
+filename <- "UC1-3c-open-refine.csv"
+
+download.file(
+  url = paste0(file_url, filename), 
+  destfile = "herbarium.csv",
+  mode = "wb"
+)
+
+```
+
+<br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Import dataset ----
+df <- read.csv2("herbarium.csv")
+
+## Have a look ----
+df |> head()
+
+```
+
+:::
+
+::: {.column width=55%}
+:::
+
+::::
+
+
+
+## Correction
+
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+**Part 1**
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download herbarium data ----
+file_url  <- "https://docs.gbif.org/course-data-mobilization/exercise-data/"
+filename <- "UC1-3c-open-refine.csv"
+
+download.file(
+  url = paste0(file_url, filename), 
+  destfile = "herbarium.csv",
+  mode = "wb"
+)
+
+```
+
+<br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Import dataset ----
+df <- read.csv2("herbarium.csv")
+
+## Have a look ----
+df |> head()
+
+```
+:::
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=45%}
+
+<br/><br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Extract plant names ----
+df$Full.name |> unique()
+```
+
+<br/>
+
+We'll focus on 2 species: _Catopsis sessiliflora_ and _Catopsis nutans_. 
+
+<br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Extract plant names ----
+plant_species <- c("Catopsis sessiliflora", "Catopsis nutans")
+
+```
+
+
+:::
+
+
+::::
+
+## Correction
+
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+**Part 2**
+
+<br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Download GBIF occurrences ----
+occ <- rgbif::occ_search(
+  scientificName = plant_species, 
+  fields = c('name', 'scientificName' , 'decimalLatitude', 'decimalLongitude', 'country'), 
+  country = "GT",
+  hasCoordinate = TRUE,
+  hasGeospatialIssue = FALSE
+)
+
+## Append occurrences -----
+occ <- rbind(
+  occ$`Catopsis sessiliflora`$data,
+  occ$`Catopsis nutans`$data
+)
+
+## Export ----
+write.csv2(
+  x = occ,
+  file = "gbif_occurrences.csv", 
+  row.names = FALSE
+)
+
+```
+:::
+
+::: {.column width=5%}
+:::
+
+
+
+::: {.column width=45%}
+
+
+<br/><br/><br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Import GBIF occurrences ----
+occ <- read.csv2("gbif_occurrences.csv")
+
+## Inspect ----
+head(occ)
+
+```  
+:::
+
+We will need to homogenize the herbarium data and GBIF data before we can pool the data together ! 
+
+::::
+
+
+
