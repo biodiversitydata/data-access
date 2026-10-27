@@ -169,7 +169,7 @@ The tag `<head>` can contain different metadata:
 - `<meta>` is used to specify the encoding, authors, keywords, etc.
 - `<link>` is used to call external resources
 
-**N.B.** This section is not necessary interesting for web scraping
+**N.B.** This section is not necessarily interesting for web scraping
 :::
 
 ::::
