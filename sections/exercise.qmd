@@ -60,7 +60,7 @@ _Catopsis nutans_ with extra observations from [GBIF](https://www.gbif.org/).
 ## File URL & file name ----
 base_url <- "https://docs.gbif.org/course-data-mobilization/exercise-data/"
 file_name <- "UC1-3c-open-refine.csv"
-full_url <- paste0(file_url, file_name)
+full_url <- paste0(base_url, file_name)
 ```
 
 . . .
@@ -133,7 +133,7 @@ length(binomial_names)
 ## File URL & file name ----
 base_url <- "https://docs.gbif.org/course-data-mobilization/exercise-data/"
 file_name <- "UC1-3c-open-refine.csv"
-full_url <- paste0(file_url, file_name)
+full_url <- paste0(base_url, file_name)
 ```
 
 <br/>
@@ -188,7 +188,10 @@ length(binomial_names)
 
 ## Download GBIF occurrences ----
 occ <- rgbif::occ_search(
-  scientificName = plant_species,
+  scientificName = c(
+    "Catopsis sessiliflora",
+    "Catopsis nutans"
+  ),
   fields = c(
     'name',
     'scientificName',
