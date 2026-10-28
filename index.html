@@ -1335,7 +1335,7 @@ Content-Type: application/json</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [[1]]
 ## [[1]]$place_id
-## [1] 85120931
+## [1] 84908085
 ## 
 ## [[1]]$licence
 ## [1] "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright"
@@ -1419,7 +1419,7 @@ Content-Type: application/json</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [[1]]
 ## [[1]]$place_id
-## [1] 85120931
+## [1] 84908085
 ## 
 ## [[1]]$licence
 ## [1] "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright"
@@ -1723,7 +1723,7 @@ Content-Type: application/json</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>##          name      lon      lat
 ## 1 Montpellier 3.876734 43.61124
-## 2       Paris 2.320041 48.85889
+## 2       Paris 2.348391 48.85350
 ## 3  Strasbourg 7.750713 48.58461
 ## 4    Grenoble 5.735782 45.18756
 ## 5     Bourges 2.399125 47.08117</code></pre>
@@ -1770,7 +1770,7 @@ Content-Type: application/json</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="" aria-label="1"></a><span class="do">## File URL &amp; file name ----</span></span>
 <span id="cb85-2"><a href="" aria-label="2"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://docs.gbif.org/course-data-mobilization/exercise-data/"</span></span>
 <span id="cb85-3"><a href="" aria-label="3"></a>file_name <span class="ot">&lt;-</span> <span class="st">"UC1-3c-open-refine.csv"</span></span>
-<span id="cb85-4"><a href="" aria-label="4"></a>full_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(file_url, file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb85-4"><a href="" aria-label="4"></a>full_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base_url, file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p><br></p>
@@ -1815,7 +1815,7 @@ Content-Type: application/json</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="" aria-label="1"></a><span class="do">## File URL &amp; file name ----</span></span>
 <span id="cb89-2"><a href="" aria-label="2"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://docs.gbif.org/course-data-mobilization/exercise-data/"</span></span>
 <span id="cb89-3"><a href="" aria-label="3"></a>file_name <span class="ot">&lt;-</span> <span class="st">"UC1-3c-open-refine.csv"</span></span>
-<span id="cb89-4"><a href="" aria-label="4"></a>full_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(file_url, file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb89-4"><a href="" aria-label="4"></a>full_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base_url, file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="cell">
@@ -1846,18 +1846,21 @@ Content-Type: application/json</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="" aria-label="1"></a><span class="do">## Download GBIF occurrences ----</span></span>
 <span id="cb93-2"><a href="" aria-label="2"></a>occ <span class="ot">&lt;-</span> rgbif<span class="sc">::</span><span class="fu">occ_search</span>(</span>
-<span id="cb93-3"><a href="" aria-label="3"></a>  <span class="at">scientificName =</span> plant_species,</span>
-<span id="cb93-4"><a href="" aria-label="4"></a>  <span class="at">fields =</span> <span class="fu">c</span>(</span>
-<span id="cb93-5"><a href="" aria-label="5"></a>    <span class="st">'name'</span>,</span>
-<span id="cb93-6"><a href="" aria-label="6"></a>    <span class="st">'scientificName'</span>,</span>
-<span id="cb93-7"><a href="" aria-label="7"></a>    <span class="st">'decimalLatitude'</span>,</span>
-<span id="cb93-8"><a href="" aria-label="8"></a>    <span class="st">'decimalLongitude'</span>,</span>
-<span id="cb93-9"><a href="" aria-label="9"></a>    <span class="st">'country'</span></span>
-<span id="cb93-10"><a href="" aria-label="10"></a>  ),</span>
-<span id="cb93-11"><a href="" aria-label="11"></a>  <span class="at">country =</span> <span class="st">"GT"</span>,</span>
-<span id="cb93-12"><a href="" aria-label="12"></a>  <span class="at">hasCoordinate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb93-13"><a href="" aria-label="13"></a>  <span class="at">hasGeospatialIssue =</span> <span class="cn">FALSE</span></span>
-<span id="cb93-14"><a href="" aria-label="14"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb93-3"><a href="" aria-label="3"></a>  <span class="at">scientificName =</span> <span class="fu">c</span>(</span>
+<span id="cb93-4"><a href="" aria-label="4"></a>    <span class="st">"Catopsis sessiliflora"</span>,</span>
+<span id="cb93-5"><a href="" aria-label="5"></a>    <span class="st">"Catopsis nutans"</span></span>
+<span id="cb93-6"><a href="" aria-label="6"></a>  ),</span>
+<span id="cb93-7"><a href="" aria-label="7"></a>  <span class="at">fields =</span> <span class="fu">c</span>(</span>
+<span id="cb93-8"><a href="" aria-label="8"></a>    <span class="st">'name'</span>,</span>
+<span id="cb93-9"><a href="" aria-label="9"></a>    <span class="st">'scientificName'</span>,</span>
+<span id="cb93-10"><a href="" aria-label="10"></a>    <span class="st">'decimalLatitude'</span>,</span>
+<span id="cb93-11"><a href="" aria-label="11"></a>    <span class="st">'decimalLongitude'</span>,</span>
+<span id="cb93-12"><a href="" aria-label="12"></a>    <span class="st">'country'</span></span>
+<span id="cb93-13"><a href="" aria-label="13"></a>  ),</span>
+<span id="cb93-14"><a href="" aria-label="14"></a>  <span class="at">country =</span> <span class="st">"GT"</span>,</span>
+<span id="cb93-15"><a href="" aria-label="15"></a>  <span class="at">hasCoordinate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb93-16"><a href="" aria-label="16"></a>  <span class="at">hasGeospatialIssue =</span> <span class="cn">FALSE</span></span>
+<span id="cb93-17"><a href="" aria-label="17"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="fragment">
