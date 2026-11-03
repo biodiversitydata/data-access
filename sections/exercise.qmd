@@ -1,6 +1,6 @@
 
 
-# {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (40 min)
+# {{< fa user-clock size=1x >}} &nbsp;&nbsp;Exercise (30 min)
 
 ## Exercise
 
@@ -39,7 +39,7 @@ _Catopsis nutans_ with extra observations from [GBIF](https://www.gbif.org/).
 
   {{< fa circle-arrow-right >}}&nbsp; Download GBIF occurrences for these two species and only for Guatemala with the [`rgbif::occ_search()`](https://docs.ropensci.org/rgbif/reference/occ_search.html) function
 
-  {{< fa circle-arrow-right >}}&nbsp; Inspect and explore the GBIF dataset.
+  {{< fa circle-arrow-right >}}&nbsp; Inspect and explore the GBIF dataset
 
   {{< fa circle-arrow-right >}}&nbsp; Export this dataset as an Excel spreadsheet with the `writexl::write_xlsx()` function
 
