@@ -32,7 +32,7 @@ function, download the **`UC1-3c-open-refine.csv`** file available [here](https:
 
 **Part 2 - GBIF occurrence data** 
 
-We want to complete the herbarium occurrences of _Catopsis sessiflora_ and 
+We want to complete the herbarium occurrences of _Catopsis sessiliflora_ and 
 _Catopsis nutans_ with extra observations from [GBIF](https://www.gbif.org/). 
 
 <br />
